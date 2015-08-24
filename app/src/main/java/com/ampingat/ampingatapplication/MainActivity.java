@@ -2,6 +2,9 @@ package com.ampingat.ampingatapplication;
 
 import java.util.Locale;
 
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -11,12 +14,17 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ImageSpan;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.content.Intent;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 
@@ -45,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
         // Set up the action bar.
         final ActionBar actionBar = getSupportActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-        
+
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
@@ -81,6 +89,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         getMenuInflater().inflate(R.menu.search_action, menu);
+        getMenuInflater().inflate(R.menu.about_action, menu);
         return true;
     }
 
@@ -137,7 +146,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
 
             switch (position) {
                 case 0:
-                    return PlaceholderFragment.newInstance(position + 1);
+                    return EmergencyFragment.newInstance();
                 case 1:
                     return EapFragment.newInstance();
                 case 2:
@@ -155,6 +164,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
         public CharSequence getPageTitle(int position) {
             Locale l = Locale.getDefault();
             switch (position) {
+
                 case 0:
                     return tabTitles[position].toUpperCase(l);
                 case 1:
@@ -191,12 +201,30 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
         public PlaceholderFragment() {
         }
 
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-            return rootView;
+        public void firstFloorMap(View view)
+        {
+            Intent intent = new Intent(view.getContext(), FirstFloorActivity.class);
+            startActivity(intent);
         }
+
+        public void secondFloorMap(View view)
+        {
+            Intent intent = new Intent(view.getContext(), SecondFloorActivity.class);
+            startActivity(intent);
+        }
+
+        public void thirdFloorMap(View view)
+        {
+            Intent intent = new Intent(view.getContext(), ThirdFloorActivity.class);
+            startActivity(intent);
+        }
+
+        public void fourthFloorMap(View view)
+        {
+            Intent intent = new Intent(view.getContext(), FourthFloorActivity.class);
+            startActivity(intent);
+        }
+
     }
 
 }

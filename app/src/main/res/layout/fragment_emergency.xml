@@ -9,23 +9,31 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:text="FIRST FLOOR"/>
+        android:text="FIRST FLOOR"
+        android:id="@+id/button_1st"
+        android:onClick="firstFloorMap"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:text="SECOND FLOOR"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:text="THIRD FLOOR"/>
+        android:text="SECOND FLOOR"
+        android:id="@+id/button_2nd"
+        android:onClick="secondFloorMap"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:text="FOURTH FLOOR"/>
+        android:text="THIRD FLOOR"
+        android:id="@+id/button_3rd"
+        android:onClick="thirdFloorMap"/>
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="FOURTH FLOOR"
+        android:id="@+id/button_4th"
+        android:onClick="fourthFloorMap"/>
 </LinearLayout>

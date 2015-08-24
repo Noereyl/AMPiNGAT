@@ -16,6 +16,38 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".FirstFloorActivity"
+            android:label="@string/title_activity_first_floor"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ampingat.ampingatapplication.MainActivity" />
+        </activity>
+        <activity
+            android:name=".SecondFloorActivity"
+            android:label="@string/title_activity_second_floor"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ampingat.ampingatapplication.MainActivity" />
+        </activity>
+        <activity
+            android:name=".ThirdFloorActivity"
+            android:label="@string/title_activity_third_floor"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ampingat.ampingatapplication.MainActivity" />
+        </activity>
+        <activity
+            android:name=".FourthFloorActivity"
+            android:label="@string/title_activity_fourth_floor"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ampingat.ampingatapplication.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
