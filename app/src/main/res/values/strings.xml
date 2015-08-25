@@ -20,7 +20,5 @@
     <string name="title_activity_second_floor">Second Floor Map</string>
     <string name="title_activity_third_floor">Third Floor Map</string>
     <string name="title_activity_fourth_floor">Fourth Floor Map</string>
-    <string name="title_activity_eap_fire">Fire EAP</string>
-    <string name="title_activity_eap_earthquake">Earthquake EAP</string>
 
 </resources>

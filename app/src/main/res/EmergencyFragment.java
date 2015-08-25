@@ -1,7 +1,5 @@
-import android.support.v4.app.Fragment;
-
 /**
  * Created by Reyle T. Revira on 8/23/2015.
  */
-public class EmergencyFragment extends Fragment {
+public class EmergencyFragment {
 }

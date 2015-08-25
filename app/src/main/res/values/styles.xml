@@ -2,11 +2,6 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat">
-        <item name="android:actionBarTabStyle">@style/ActionBarTab</item>
-        <item name="actionBarTabStyle">@style/ActionBarTab</item>
-    </style>
-
-    <style name="ActionBarTab">
-        <item name="android:background">@drawable/tab_bar_background</item>
+        <!-- Customize your theme here. -->
     </style>
 </resources>

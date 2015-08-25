@@ -26,12 +26,10 @@ import android.content.Intent;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toolbar;
 
 
 public class MainActivity extends AppCompatActivity implements ActionBar.TabListener {
 
-    private static final String SWITCH_TAB = null;
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
      * fragments for each of the sections. We use a
@@ -45,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
     /**
      * The {@link ViewPager} that will host the section contents.
      */
-    ViewPager mViewPager = (ViewPager) findViewById(R.id.pager);
+    ViewPager mViewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +59,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
         // Set up the ViewPager with the sections adapter.
+        mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
         // When swiping between different sections, select the corresponding
@@ -223,17 +222,6 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
         public void fourthFloorMap(View view)
         {
             Intent intent = new Intent(view.getContext(), FourthFloorActivity.class);
-            startActivity(intent);
-        }
-
-        public void fireEap(View view)
-        {
-            Intent intent = new Intent(view.getContext(), EapFireActivity.class);
-            startActivity(intent);
-        }
-        public void earthquakeEap(View view)
-        {
-            Intent intent = new Intent(view.getContext(), EapEarthquakeActivity.class);
             startActivity(intent);
         }
 
