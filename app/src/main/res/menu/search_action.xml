@@ -6,6 +6,6 @@
         android:id="@+id/action_search"
         android:icon="@drawable/ic_icon_search"
         android:title= "Search"
-        yourapp:showAsAction = "ifRoom"/>
+        yourapp:showAsAction = "ifRoom|withText"/>
 
 </menu>
