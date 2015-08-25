@@ -89,7 +89,6 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         getMenuInflater().inflate(R.menu.search_action, menu);
-        getMenuInflater().inflate(R.menu.about_action, menu);
         return true;
     }
 
@@ -164,7 +163,6 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
         public CharSequence getPageTitle(int position) {
             Locale l = Locale.getDefault();
             switch (position) {
-
                 case 0:
                     return tabTitles[position].toUpperCase(l);
                 case 1:
@@ -201,7 +199,14 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
         public PlaceholderFragment() {
         }
 
-        public void firstFloorMap(View view)
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+            return rootView;
+        }
+
+    public void firstFloorMap(View view)
         {
             Intent intent = new Intent(view.getContext(), FirstFloorActivity.class);
             startActivity(intent);
