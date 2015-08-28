@@ -2,6 +2,7 @@ package com.ampingat.ampingatapplication;
 
 import java.util.Locale;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -92,10 +93,19 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
+        if (id == R.id.action_user_profile) {
+            return true;
+        }
         if (id == R.id.action_settings) {
             return true;
         }
         if (id == R.id.action_search) {
+            return true;
+        }
+        if (id == R.id.action_about) {
+            return true;
+        }
+        if (id == R.id.action_update) {
             return true;
         }
 
@@ -137,7 +147,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
 
             switch (position) {
                 case 0:
-                    return PlaceholderFragment.newInstance(position + 1);
+                    return EmergencyFragment.newInstance();
                 case 1:
                     return EapFragment.newInstance();
                 case 2:
@@ -197,6 +207,41 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
             return rootView;
         }
-    }
+        public void firstFloorMap(View view)
+        {
+            Intent intent = new Intent(view.getContext(), FirstFloorActivity.class);
+            startActivity(intent);
+        }
 
+        public void secondFloorMap(View view)
+        {
+            Intent intent = new Intent(view.getContext(), SecondFloorActivity.class);
+            startActivity(intent);
+        }
+
+        public void thirdFloorMap(View view)
+        {
+            Intent intent = new Intent(view.getContext(), ThirdFloorActivity.class);
+            startActivity(intent);
+        }
+
+        public void fourthFloorMap(View view)
+        {
+            Intent intent = new Intent(view.getContext(), FourthFloorActivity.class);
+            startActivity(intent);
+        }
+
+        public void fireEap(View view)
+        {
+            Intent intent = new Intent(view.getContext(), EapFireActivity.class);
+            startActivity(intent);
+        }
+
+        public void earthquakeEap(View view)
+        {
+            Intent intent = new Intent(view.getContext(), EapEarthquakeActivity.class);
+            startActivity(intent);
+        }
+    }
 }
+

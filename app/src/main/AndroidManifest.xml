@@ -4,7 +4,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_ampingat"
+        android:icon="@mipmap/ic_ampingat"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
@@ -15,6 +15,54 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".FirstFloorActivity"
+            android:label="@string/title_activity_first_floor"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ampingat.ampingatapplication.MainActivity" />
+        </activity>
+        <activity
+            android:name=".SecondFloorActivity"
+            android:label="@string/title_activity_second_floor"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ampingat.ampingatapplication.MainActivity" />
+        </activity>
+        <activity
+            android:name=".ThirdFloorActivity"
+            android:label="@string/title_activity_third_floor"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ampingat.ampingatapplication.MainActivity" />
+        </activity>
+        <activity
+            android:name=".FourthFloorActivity"
+            android:label="@string/title_activity_fourth_floor"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ampingat.ampingatapplication.MainActivity" />
+        </activity>
+        <activity
+            android:name=".EapFireActivity"
+            android:label="@string/title_activity_eap_fire"
+            android:parentActivityName=".EapFireActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ampingat.ampingatapplication.MainActivity" />
+        </activity>
+        <activity
+            android:name=".EapEarthquakeActivity"
+            android:label="@string/title_activity_eap_earthquake"
+            android:parentActivityName=".EapEarthquakeActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ampingat.ampingatapplication.MainActivity" />
         </activity>
     </application>
 
