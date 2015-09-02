@@ -1,5 +1,5 @@
 <?php $title = "PROECT|Register";?>
-<?php include('includes/header1.php');?>
+<?php include('includes/header2.php');?>
 <br><br><br><br><br><br><br><br>
 	<form action = "signup.php" method = "POST">
 		<fieldset class = "account-info">
