@@ -1,0 +1,35 @@
+body{
+	background-color:#eeeeee;
+	font-family:Arial, Helvetica, sans-serif;
+}
+fieldset{
+	width:350px;	
+}
+fieldset,table,td{	
+	font-size:12px;
+}
+input{
+	border:1px solid #999;
+}
+.error{
+	color:red;
+	font-size:13px;
+	padding:0px 2px;
+	background-color: #FFFFCC;
+}
+.label{
+	font-weight:bold;
+}
+.tablecss{
+	background-color:#CCC;
+}
+.whiterow{
+	background-color:#FFF;
+}
+#imageframe{
+	padding:2px; 
+	overflow:hidden;
+	width:auto;
+	height:auto;
+	margin-top:5px;
+}

@@ -17,12 +17,12 @@ if(!isset($_SESSION['username'])) {
 <br><br><br><br><br><br>
 	<html>
 	<body>
-		<head><title>View Information</title>
+		<head><title>List of Users</title>
 	</head>
 		<div class = "container">
 			<div class = "row">
 				<div class = "col-md-12">
-					<h2>My Information</h2>
+					<h2>List of Users</h2>
 					<br>
 							<table class="table table-striped">
 								<thead>

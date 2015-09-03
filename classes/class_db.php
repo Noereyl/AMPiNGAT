@@ -4,6 +4,7 @@ class Database{
 	var $username = "root";
 	var $password = "";
 	var $db = "midterm_exam_db";
+	
 
 	function connect(){
 		$conn = new mysqli($this->servername, $this->username, $this->password, $this->db);

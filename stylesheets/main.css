@@ -72,6 +72,7 @@ select {
 .account-action {
 	border-top: 1px solid #9c0e51;
 	padding: 20px;
+	
 }
 .account-action .btn {
 	background: linear-gradient(#9c0e51, #e11072);

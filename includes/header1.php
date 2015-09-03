@@ -14,6 +14,8 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
+				<a class="navbar-brand" href="register.php">Register</a>
+				<a class="navbar-brand" href="upload.php">Upload Image</a>
 				<a class="navbar-brand" href="logout.php">Logout</a>
 			</div>
 		<</div>
