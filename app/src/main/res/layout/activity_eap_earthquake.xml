@@ -4,5 +4,4 @@
     android:layout_height="match_parent"
     tools:context="com.ampingat.ampingatapplication.EapEarthquakeActivity"
     android:orientation="vertical">
-
 </LinearLayout>
