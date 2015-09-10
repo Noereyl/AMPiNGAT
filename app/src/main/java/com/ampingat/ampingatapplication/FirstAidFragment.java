@@ -40,17 +40,22 @@ import java.util.concurrent.TimeUnit;
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_firstaid, container, false);
 
+        //bind widget to listview object
         videoListView = (ListView)rootView.findViewById(R.id.videoList);
 
+        //=============create dummy values for list
         List<String> videoList = new ArrayList<>();
         videoList.add(Environment.getExternalStorageDirectory() + "/Download/sample.mp4");
         videoList.add(Environment.getExternalStorageDirectory() + "/Download/sample2.mp4");
 
-
+        //instantiate video list adapter with the required parameters
         final VideoListAdapter videoListAdapter = new VideoListAdapter(getActivity().getApplicationContext(), videoList);
 
+        //set adapter to video view
         videoListView.setAdapter(videoListAdapter);
 
+        //set on item click listener to specify what actions are
+        // to be done when clicking on a single item of the list
         videoListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
