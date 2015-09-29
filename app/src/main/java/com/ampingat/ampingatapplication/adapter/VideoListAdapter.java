@@ -1,33 +1,40 @@
 package com.ampingat.ampingatapplication.adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.media.Image;
+import android.media.ThumbnailUtils;
 import android.net.Uri;
 import android.os.Environment;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.VideoView;
 
 import com.ampingat.ampingatapplication.R;
+import com.ampingat.ampingatapplication.VideoMetaData;
+
 import java.util.List;
 
 
 public class VideoListAdapter extends BaseAdapter {
 
-    List<String> mVideoList;
+    List<VideoMetaData> mVideoList;
     Context mContext;
-    VideoView videoView;
-    Button btn;
 
-    public VideoListAdapter(Context context, List<String> videoList){
-        mContext = context;
-        mVideoList = videoList;
+
+
+
+    public VideoListAdapter(Context context, List<VideoMetaData> videoList){
+        this.mContext = context;
+        this.mVideoList = videoList;
     }
 
     @Override
@@ -37,7 +44,7 @@ public class VideoListAdapter extends BaseAdapter {
     }
 
     @Override
-    public String getItem(int position) {
+    public VideoMetaData getItem(int position) {
 
         return mVideoList.get(position);
     }
@@ -54,6 +61,7 @@ public class VideoListAdapter extends BaseAdapter {
         /**
          * if current view is null, the view will be instantiated with the specified custom view using View.inflate(...)
          */
+
         if(convertView == null){
             //instantiate view holder class
             holder = new Holder();
@@ -63,7 +71,6 @@ public class VideoListAdapter extends BaseAdapter {
 
             //bind view widgets from convertView to view holder class
             holder.videoFilename = (TextView)convertView.findViewById(R.id.videoTitle);
-
             //we do this when we have to keep track on the data binded to that particular
             //view item of the list
             convertView.setTag(holder);
@@ -74,47 +81,10 @@ public class VideoListAdapter extends BaseAdapter {
 
             //assign to view holder object the current view tag
             holder = (Holder)convertView.getTag();
-
-            if(holder.videoFilename.equals("Adult CPR (Lay Rescuer)")) {
-                videoView = (VideoView) convertView.findViewById(R.id.videoEntry);
-                MediaController mc = new MediaController(mContext);
-                mc.setAnchorView(videoView);
-                mc.setMediaPlayer(videoView);
-                videoView.setMediaController(mc);
-                holder.directoryPath = (Environment.getExternalStorageDirectory() + "/Download/Adult CPR - Lay Rescuer.mp4");
-                videoView.setVideoURI(Uri.parse(holder.directoryPath));
-
-                holder.videoFilename.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        videoView.start();
-
-                    }
-                });
-            }
-
-            if(holder.videoFilename.equals("Amputation")) {
-                videoView = (VideoView) convertView.findViewById(R.id.videoEntry);
-                MediaController mc = new MediaController(mContext);
-                mc.setAnchorView(videoView);
-                mc.setMediaPlayer(videoView);
-                videoView.setMediaController(mc);
-                holder.directoryPath = (Environment.getExternalStorageDirectory() + "/Download/Amputation.mp4");
-                videoView.setVideoURI(Uri.parse(holder.directoryPath));
-
-                holder.videoFilename.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        holder.videoFilename.setVisibility(View.INVISIBLE);
-                        videoView.start();
-
-                    }
-                });
-            }
         }
         //assign variables to the view holder fields
-        holder.videoFilename.setText(mVideoList.get(position));
-        holder.directoryPath = mVideoList.get(position);
+        holder.videoFilename.setText(mVideoList.get(position).getFileName());
+        holder.directoryPath = mVideoList.get(position).getFilePath();
 
         //return convertView with the data being loaded
         return convertView;
