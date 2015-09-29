@@ -2,6 +2,7 @@ package com.ampingat.ampingatapplication;
 
 import java.util.Locale;
 
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
@@ -18,6 +19,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.LinearInterpolator;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 
@@ -42,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         // Set up the action bar.
         final ActionBar actionBar = getSupportActionBar();
@@ -112,6 +116,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
         return super.onOptionsItemSelected(item);
     }
 
+
     @Override
     public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
         // When the given tab is selected, switch to the corresponding page in
@@ -138,6 +143,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
         public SectionsPagerAdapter(FragmentManager fm) {
             super(fm);
             tabTitles = getResources().getStringArray(R.array.tabPages);
+
         }
 
         @Override
@@ -206,6 +212,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
             return rootView;
+
         }
         public void firstFloorMap(View view)
         {
@@ -224,7 +231,6 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
             Intent intent = new Intent(view.getContext(), ThirdFloorActivity.class);
             startActivity(intent);
         }
-
         public void fourthFloorMap(View view)
         {
             Intent intent = new Intent(view.getContext(), FourthFloorActivity.class);
@@ -242,6 +248,8 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
             Intent intent = new Intent(view.getContext(), EapEarthquakeActivity.class);
             startActivity(intent);
         }
+
+
     }
 }
 

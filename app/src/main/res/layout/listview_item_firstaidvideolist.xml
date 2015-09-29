@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="#000000"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:stretchColumns="*">
+    android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/videoTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textColor="@android:color/white"
+        />
 
-        <TextView
-            android:id="@+id/videoTitle"
-            android:layout_column="0"
-            android:padding="10dp"
-            android:layout_span="2"
-            android:textColor="@android:color/white"/>
-
-</TableLayout>
+</LinearLayout>
