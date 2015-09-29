@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/AmpingatApplication.iml" filepath="$PROJECT_DIR$/AmpingatApplication.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AMPiNGAT.iml" filepath="$PROJECT_DIR$/AMPiNGAT.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
