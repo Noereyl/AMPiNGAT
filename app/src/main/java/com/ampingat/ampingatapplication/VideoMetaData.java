@@ -9,14 +9,18 @@ public class VideoMetaData {
 
     private String filePath;
 
+    private String fileImage;
+
 
     public String getFileName()
     {
+
         return fileName;
     }
 
     public void setFileName(String fileName)
     {
+
         this.fileName = fileName;
     }
     public String getFilePath()
@@ -26,7 +30,20 @@ public class VideoMetaData {
 
     public void setFilePath(String filePath)
     {
+
         this.filePath = filePath;
+    }
+
+    public String getFileImage()
+    {
+
+        return fileImage;
+    }
+
+    public void setFileImage(String fileImage)
+    {
+
+        this.fileImage = fileImage;
     }
 
 }

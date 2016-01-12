@@ -1,22 +1,10 @@
 package com.ampingat.ampingatapplication.adapter;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.media.Image;
-import android.media.ThumbnailUtils;
-import android.net.Uri;
-import android.os.Environment;
-import android.provider.MediaStore;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.MediaController;
 import android.widget.TextView;
-import android.widget.VideoView;
 
 import com.ampingat.ampingatapplication.R;
 import com.ampingat.ampingatapplication.VideoMetaData;
@@ -28,9 +16,6 @@ public class VideoListAdapter extends BaseAdapter {
 
     List<VideoMetaData> mVideoList;
     Context mContext;
-
-
-
 
     public VideoListAdapter(Context context, List<VideoMetaData> videoList){
         this.mContext = context;

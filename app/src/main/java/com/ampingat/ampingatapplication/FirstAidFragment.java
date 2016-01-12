@@ -2,22 +2,20 @@
 package com.ampingat.ampingatapplication;
 
     import android.content.Intent;
-    import android.os.Bundle;
-    import android.os.Environment;
-    import android.support.v4.app.Fragment;
-    import android.util.Log;
-    import android.view.LayoutInflater;
-    import android.view.View;
-    import android.view.ViewGroup;
-    import android.widget.AdapterView;
-    import android.widget.ImageView;
-    import android.widget.ListView;
+import android.os.Bundle;
+import android.os.Environment;
+import android.support.v4.app.Fragment;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ListView;
 
-    import com.ampingat.ampingatapplication.adapter.VideoListAdapter;
+import com.ampingat.ampingatapplication.adapter.VideoListAdapter;
 
-    import java.io.File;
-    import java.util.ArrayList;
-    import java.util.List;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Reyle T. Revira on 8/23/2015.
@@ -41,9 +39,8 @@ public class FirstAidFragment extends Fragment  {
         videoListView = (ListView)rootView.findViewById(R.id.videoList);
 
         //create dummy values for list
-        List<VideoMetaData> videoList = new ArrayList<>();
-         File file = new File(Environment.getExternalStorageDirectory() +"/AmpingatVid/Amputation.mp4");
-        Log.e("FILE", file.isFile() + "");
+        List<VideoMetaData> videoList = new ArrayList<VideoMetaData>();
+
         for (int i=0;i<17;i++){
             VideoMetaData data;
             data = new VideoMetaData();

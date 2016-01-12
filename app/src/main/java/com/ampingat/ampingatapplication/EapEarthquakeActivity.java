@@ -1,11 +1,11 @@
 package com.ampingat.ampingatapplication;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
+import android.support.v7.app.ActionBarActivity;
 import android.view.MenuItem;
 
 
+@SuppressWarnings({"ALL", "deprecation"})
 public class EapEarthquakeActivity extends ActionBarActivity {
 
     @Override

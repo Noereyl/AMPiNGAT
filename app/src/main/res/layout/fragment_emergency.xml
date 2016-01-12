@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <Button
         android:layout_width="match_parent"
@@ -12,7 +12,8 @@
         android:id="@+id/button_1st"
         android:text="FIRST FLOOR"
         android:textSize="20sp"
-        android:onClick="firstFloorMap"/>
+        android:onClick="firstFloorMap"
+        android:typeface="monospace" />
 
     <Button
         android:layout_width="match_parent"
@@ -21,7 +22,8 @@
         android:text="SECOND FLOOR"
         android:id="@+id/button_2nd"
         android:textSize="20sp"
-        android:onClick="secondFloorMap"/>
+        android:onClick="secondFloorMap"
+        android:typeface="monospace" />
 
     <Button
         android:layout_width="match_parent"
@@ -30,7 +32,8 @@
         android:text="THIRD FLOOR"
         android:id="@+id/button_3rd"
         android:textSize="20sp"
-        android:onClick="thirdFloorMap"/>
+        android:onClick="thirdFloorMap"
+        android:typeface="monospace" />
 
     <Button
         android:layout_width="match_parent"
@@ -39,5 +42,6 @@
         android:text="FOURTH FLOOR"
         android:id="@+id/button_4th"
         android:textSize="20sp"
-        android:onClick="fourthFloorMap"/>
+        android:onClick="fourthFloorMap"
+        android:typeface="monospace" />
 </LinearLayout>

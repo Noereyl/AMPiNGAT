@@ -11,11 +11,10 @@
 
     <ListView
         android:id="@+id/videoList"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:cacheColorHint="#00FFFFFF"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"/>
+        android:divider="@color/background_material_light"
+        android:fastScrollStyle="@color/abc_secondary_text_material_light" />
 
 </FrameLayout>
