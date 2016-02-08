@@ -1,22 +1,11 @@
 package com.ampingat.ampingatapplication.adapter;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.media.Image;
-import android.media.ThumbnailUtils;
-import android.net.Uri;
-import android.os.Environment;
-import android.provider.MediaStore;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.MediaController;
 import android.widget.TextView;
-import android.widget.VideoView;
 
 import com.ampingat.ampingatapplication.R;
 import com.ampingat.ampingatapplication.VideoMetaData;
@@ -28,9 +17,6 @@ public class VideoListAdapter extends BaseAdapter {
 
     List<VideoMetaData> mVideoList;
     Context mContext;
-
-
-
 
     public VideoListAdapter(Context context, List<VideoMetaData> videoList){
         this.mContext = context;
@@ -71,6 +57,9 @@ public class VideoListAdapter extends BaseAdapter {
 
             //bind view widgets from convertView to view holder class
             holder.videoFilename = (TextView)convertView.findViewById(R.id.videoTitle);
+            holder.videoFileSize = (TextView)convertView.findViewById(R.id.videoSize);
+            holder.videoFileLength = (TextView)convertView.findViewById(R.id.videoLength);
+            holder.videoFileImage = (ImageView)convertView.findViewById(R.id.Thumbnail);
             //we do this when we have to keep track on the data binded to that particular
             //view item of the list
             convertView.setTag(holder);
@@ -84,7 +73,11 @@ public class VideoListAdapter extends BaseAdapter {
         }
         //assign variables to the view holder fields
         holder.videoFilename.setText(mVideoList.get(position).getFileName());
+        holder.videoFileSize.setText(mVideoList.get(position).getFileSize());
+        holder.videoFileLength.setText(mVideoList.get(position).getFileLength());
         holder.directoryPath = mVideoList.get(position).getFilePath();
+        holder.videoFileImage.setImageResource(mVideoList.get(position).getFileImage());
+
 
         //return convertView with the data being loaded
         return convertView;
@@ -95,6 +88,9 @@ public class VideoListAdapter extends BaseAdapter {
      */
     static class Holder{
         TextView videoFilename;
+        TextView videoFileSize;
+        TextView videoFileLength;
         String directoryPath;
+        ImageView videoFileImage;
     }
 }

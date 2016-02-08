@@ -6,6 +6,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 
+@SuppressWarnings("ALL")
 public class EapFireActivity extends ActionBarActivity {
 
     @Override

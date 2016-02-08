@@ -1,43 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#000">
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:id="@+id/button_1st"
-        android:text="FIRST FLOOR"
         android:textSize="20sp"
-        android:onClick="firstFloorMap"/>
+        android:background="@drawable/ic_first"
+        android:onClick="firstFloorMap"
+        android:typeface="monospace"
+        android:textColor="#ff802200" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:text="SECOND FLOOR"
+        android:background="@drawable/ic_second"
         android:id="@+id/button_2nd"
         android:textSize="20sp"
-        android:onClick="secondFloorMap"/>
+        android:onClick="secondFloorMap"
+        android:typeface="monospace"
+        android:textColor="#ff802200" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:text="THIRD FLOOR"
+        android:background="@drawable/ic_third"
         android:id="@+id/button_3rd"
         android:textSize="20sp"
-        android:onClick="thirdFloorMap"/>
+        android:onClick="thirdFloorMap"
+        android:typeface="monospace"
+        android:textColor="#ff802200" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:text="FOURTH FLOOR"
+        android:background="@drawable/ic_fourth"
         android:id="@+id/button_4th"
         android:textSize="20sp"
-        android:onClick="fourthFloorMap"/>
+        android:onClick="fourthFloorMap"
+        android:typeface="monospace"
+        android:textColor="#ff802200" />
 </LinearLayout>

@@ -1,7 +1,29 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.ampingat.ampingatapplication.FourthFloorActivity"
-    android:orientation="vertical">
+    android:background="#ff080606">
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/text1"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:text="Where are you now?"
+        android:textSize="40sp"
+        android:layout_gravity="center"
+        android:textAllCaps="true"
+        android:textColor="#fffdfdfe" />
+
+    <ImageView android:id="@+id/customImageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="matrix"
+        android:adjustViewBounds="true"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_fourthfloor"
+        android:layout_marginTop="50dp">
+    </ImageView>
+
+
+
+</FrameLayout>

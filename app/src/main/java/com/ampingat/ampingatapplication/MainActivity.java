@@ -1,27 +1,22 @@
 package com.ampingat.ampingatapplication;
 
-import java.util.Locale;
-
-import android.animation.ObjectAnimator;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.os.Bundle;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.LinearInterpolator;
-import android.widget.ProgressBar;
-import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.Locale;
 
 
 public class MainActivity extends AppCompatActivity implements ActionBar.TabListener {
@@ -45,7 +40,6 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
         // Set up the action bar.
         final ActionBar actionBar = getSupportActionBar();
@@ -85,7 +79,6 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
-        getMenuInflater().inflate(R.menu.search_action, menu);
         return true;
     }
 
@@ -103,17 +96,28 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
         if (id == R.id.action_settings) {
             return true;
         }
-        if (id == R.id.action_search) {
-            return true;
-        }
         if (id == R.id.action_about) {
             return true;
         }
-        if (id == R.id.action_update) {
+        if (id == R.id.action_signout) {
             return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void showProfile(MenuItem item){
+        Toast.makeText(this, "Welcome to your profile!", Toast.LENGTH_LONG).show();
+        Intent i = new Intent(MainActivity.this, WelcomeActivity.class);
+        startActivity(i);
+        finish();
+    }
+
+    UserSessionManager session;
+
+    public void logout(MenuItem item) {
+        Toast.makeText(this, "Your are logging out...", Toast.LENGTH_LONG).show();
+        session.logoutUser();
     }
 
 
@@ -166,7 +170,6 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
             // Show 3 total pages.
             return tabTitles.length;
         }
-
         @Override
         public CharSequence getPageTitle(int position) {
             Locale l = Locale.getDefault();
@@ -236,19 +239,6 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
             Intent intent = new Intent(view.getContext(), FourthFloorActivity.class);
             startActivity(intent);
         }
-
-        public void fireEap(View view)
-        {
-            Intent intent = new Intent(view.getContext(), EapFireActivity.class);
-            startActivity(intent);
-        }
-
-        public void earthquakeEap(View view)
-        {
-            Intent intent = new Intent(view.getContext(), EapEarthquakeActivity.class);
-            startActivity(intent);
-        }
-
 
     }
 }
