@@ -7,8 +7,9 @@
     <item android:id="@+id/action_user_profile"
         android:title="@string/action_user_profile"
         android:orderInCategory="100"
-        app:showAsAction="never"
-        android:onClick="showProfile"/>
+        app:showAsAction="collapseActionView"
+        android:icon="@drawable/ic_profile"
+        android:onClick="showProfile" />
 
     <item android:id="@+id/action_report"
         android:title="@string/action_report"

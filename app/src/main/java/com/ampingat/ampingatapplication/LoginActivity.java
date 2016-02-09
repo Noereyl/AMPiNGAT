@@ -1,11 +1,11 @@
 package com.ampingat.ampingatapplication;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -27,7 +27,7 @@ import butterknife.InjectView;
 
 
 @SuppressWarnings("ALL")
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends Activity {
 
     JSONParser jsonParser = new JSONParser();
     private static String url  = "http://192.168.56.1/ampingat/c_json/login";
@@ -52,7 +52,8 @@ public class LoginActivity extends AppCompatActivity {
         session = new UserSessionManager(getApplicationContext());
 
         Toast.makeText(getApplicationContext(),
-                "User Login Status:" + session.isUserLoggedIn(), Toast.LENGTH_LONG).show();
+                "User login status:" + session.isUserLoggedIn(), Toast.LENGTH_LONG).show();
+
 
         bLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -129,18 +130,22 @@ public class LoginActivity extends AppCompatActivity {
 
         protected void onPostExecute(Boolean success) {
             progressDialog.dismiss();
+            String userid = etIdnumber.getText().toString();
+            String password = etPassword.getText().toString();
+
             if (success) {
-              /*  Intent i = new Intent(LoginActivity.this, MainActivity.class);*/
-                Intent i = new Intent(LoginActivity.this, WelcomeActivity.class);
-                i.putExtra("id_no",loginResponse.user.idNo);
-                i.putExtra("username",loginResponse.user.username);
-                i.putExtra("password",loginResponse.user.password);
-                i.putExtra("usertype",loginResponse.user.usertype);
-                session.createUserLoginSession(loginResponse.user.username+ " " + loginResponse.user.password, loginResponse.user.usertype, loginResponse.user.idNo);
-                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(i);
-                finish();
+                if(userid.equals(loginResponse.user.idNo) && password.equals(loginResponse.user.password)){
+                    Intent i = new Intent(LoginActivity.this, MainActivity.class);
+                    i.putExtra("id_no", loginResponse.user.idNo);
+                    i.putExtra("username", loginResponse.user.username);
+                    i.putExtra("password", loginResponse.user.password);
+                    i.putExtra("usertype", loginResponse.user.usertype);
+                    session.createUserLoginSession(loginResponse.user.username+ " " + loginResponse.user.password, loginResponse.user.usertype, loginResponse.user.idNo);
+                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(i);
+                    finish();
+                }
             }
             if (success != null) {
                 Toast.makeText(LoginActivity.this, loginResponse.message, Toast.LENGTH_LONG).show();

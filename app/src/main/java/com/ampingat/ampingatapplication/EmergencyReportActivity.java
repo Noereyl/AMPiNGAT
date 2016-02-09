@@ -2,6 +2,7 @@ package com.ampingat.ampingatapplication;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -26,15 +27,16 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 
-@SuppressWarnings("ALL")
-public class ReportingActivity extends Activity {
+public class EmergencyReportActivity extends Activity {
 
     JSONParser jsonParser = new JSONParser();
-    private static String url  = "http://192.168.56.1/ampingat/c_report";
+//    private static String url  = "http://192.168.56.1/ampingat/c_report";
+    private static String url  = "http://172.20.10.2/ampingat/c_report";
     @InjectView(R.id.EmergencyType) EditText etEtype;
     @InjectView(R.id.Location) EditText etLocation;
     @InjectView(R.id.Remarks) EditText etRemarks;
     @InjectView(R.id.bSend) Button bSend;
+    @InjectView(R.id.bCancel) Button bCancel;
     UserSessionManager session;
 
     @Override
@@ -43,17 +45,25 @@ public class ReportingActivity extends Activity {
                 .detectDiskReads().detectDiskWrites().detectNetwork()
                 .penaltyLog().build());
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_reporting);
+        setContentView(R.layout.activity_emergency_report);
         ButterKnife.inject(this);
 
         session = new UserSessionManager(getApplicationContext());
+
+        bCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(EmergencyReportActivity.this, MainActivity.class);
+                startActivity(i);
+                finish();
+            }
+        });
 
         bSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String type = etEtype.getText().toString();
                 String location = etLocation.getText().toString();
-                String remarks = etRemarks.getText().toString();
                 if (type.length() == 0) {
                     etEtype.setError("This field is empty!");
                     return;
@@ -68,6 +78,8 @@ public class ReportingActivity extends Activity {
         });
     }
 
+
+
     class attemptSend extends AsyncTask<String, String, Boolean> {
 
         SendReportResponse sendReportResponse = null;
@@ -75,7 +87,7 @@ public class ReportingActivity extends Activity {
 
         protected void onPreExecute() {
             super.onPreExecute();
-            progressDialog = new ProgressDialog(ReportingActivity.this,
+            progressDialog = new ProgressDialog(EmergencyReportActivity.this,
                     R.style.AppTheme_Dark_Dialog);
             progressDialog.setMessage("Sending...");
             progressDialog.setIndeterminate(false);
@@ -94,9 +106,13 @@ public class ReportingActivity extends Activity {
 
 
             List<NameValuePair> params = new ArrayList<NameValuePair>();
-            String userid = user.get(UserSessionManager.KEY_ID_NUMBER);
+            String userid = user.get(UserSessionManager.KEY_TYPE);
+            String username = user.get(UserSessionManager.KEY_NAME);
+            String usertype = user.get(UserSessionManager.KEY_ID_NUMBER);
             params.add(new BasicNameValuePair("id_no", userid));
+            params.add(new BasicNameValuePair("username", username));
             params.add(new BasicNameValuePair("message", message));
+            params.add(new BasicNameValuePair("usertype", usertype));
             Log.d("request!", "starting");
 
             JSONObject json = jsonParser.makeHttpRequest(url, "POST", params);
@@ -128,12 +144,13 @@ public class ReportingActivity extends Activity {
             etLocation.setText("");
 
             if (success) {
-                Toast.makeText(ReportingActivity.this, sendReportResponse.message, Toast.LENGTH_LONG).show();
+                Toast.makeText(EmergencyReportActivity.this, sendReportResponse.message, Toast.LENGTH_LONG).show();
             }
+            Intent i = new Intent(EmergencyReportActivity.this, MainActivity.class);
+            startActivity(i);
+            finish();
         }
 
     }
 
 }
-
-

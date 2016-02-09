@@ -7,7 +7,6 @@ import android.widget.ImageView;
 
 public class FourthFloorActivity extends Activity {
 
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fourth_floor);
@@ -15,4 +14,6 @@ public class FourthFloorActivity extends Activity {
         iv.setOnTouchListener(new Touch());
 
     }
+
+
 }

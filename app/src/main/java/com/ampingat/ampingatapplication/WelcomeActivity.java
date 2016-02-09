@@ -32,7 +32,8 @@ public class WelcomeActivity extends Activity {
         Toast.makeText(getApplicationContext(),
                 "User Login Status:" + session.isUserLoggedIn(), Toast.LENGTH_LONG).show();
 
-        session.checkLogin();
+        if(session.checkLogin())
+            finish();
 
         HashMap<String, String> user = session.getUserDetails();
 

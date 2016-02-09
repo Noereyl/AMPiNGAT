@@ -33,4 +33,5 @@
     <string name="title_activity_splash_screen">SplashScreen</string>
     <string name="title_activity_welcome">WelcomeActivity</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_emergency_report">EmergencyReportActivity</string>
 </resources>

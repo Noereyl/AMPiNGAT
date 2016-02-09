@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import java.util.HashMap;
 import java.util.Locale;
 
 
@@ -24,11 +25,24 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
 
     SectionsPagerAdapter mSectionsPagerAdapter;
     ViewPager mViewPager;
+    UserSessionManager session;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        session = new UserSessionManager(getApplicationContext());
+        Toast.makeText(getApplicationContext(),
+                "User Login Status: " + session.isUserLoggedIn(),
+                Toast.LENGTH_LONG).show();
+        if(session.checkLogin())
+            finish();
+
+        HashMap<String, String> user = session.getUserDetails();
+
+        String userid = user.get(UserSessionManager.KEY_ID_NUMBER);
+        String name = user.get(UserSessionManager.KEY_NAME);
+        String type = user.get(UserSessionManager.KEY_TYPE);
 
         // Set up the action bar.
         final ActionBar actionBar = getSupportActionBar();
@@ -103,16 +117,17 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
     }
 
     public void reporting(MenuItem item){
-        Intent i = new Intent(MainActivity.this, ReportingActivity.class);
+        Intent i = new Intent(MainActivity.this, EmergencyReportActivity.class);
         startActivity(i);
         finish();
     }
 
-    UserSessionManager session;
+
 
     public void logout(MenuItem item) {
-        Toast.makeText(this, "Your are logging out...", Toast.LENGTH_LONG).show();
-        session.logoutUser();
+        Intent i = new Intent(MainActivity.this, LoginActivity.class);
+        startActivity(i);
+        finish();
     }
 
 

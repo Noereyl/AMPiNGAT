@@ -21,7 +21,8 @@ public class SplashScreen extends Activity {
         setContentView(R.layout.activity_splash_screen);
 
         session = new UserSessionManager(getApplicationContext());
-        session.checkLogin();
+        if(session.checkLogin())
+            finish();
 
         textView = (TextView) findViewById(R.id.status);
         progressBar = (ProgressBar) findViewById((R.id.progressBar));

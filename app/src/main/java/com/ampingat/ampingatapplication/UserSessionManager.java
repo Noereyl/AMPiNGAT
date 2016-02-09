@@ -16,7 +16,7 @@ public class UserSessionManager {
     Context context;
     int PRIVATE_MODE = 0;
 
-    private static final String PREFER_NAME = "SessionLogin";
+    private static final String PREFER_NAME = "LoginPrefs";
     private static final String IS_USER_LOGIN = "IsUserLoggedIn";
     public static final String KEY_NAME = "name";
     public static final String KEY_ID_NUMBER = "userid";
@@ -35,14 +35,16 @@ public class UserSessionManager {
         editor.commit();
     }
 
-    public void checkLogin(){
+    public boolean checkLogin(){
         // Check login status
         if(!this.isUserLoggedIn()){
             Intent i = new Intent(context, LoginActivity.class);
             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(i);
+            return true;
         }
+        return false;
     }
 
     public HashMap<String, String> getUserDetails () {

@@ -7,9 +7,8 @@
         android:targetSdkVersion="22" />
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
-    <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <android:uses-permission
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission
         android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="22" />
 
@@ -23,6 +22,10 @@
         android:label="@string/app_name"
         android:theme="@style/CustomActionBarTheme" >
         <activity android:name=".MainActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".FirstFloorActivity"
@@ -72,18 +75,18 @@
         <activity
             android:name=".SplashScreen"
             android:launchMode="singleTop" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
         </activity>
         <activity android:name=".LoginActivity" >
         </activity>
         <activity android:name=".WelcomeActivity" >
         </activity>
         <activity
-            android:name=".ReportingActivity"
-            android:parentActivityName=".MainActivity">
+            android:name=".EmergencyReportActivity"
+            android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.ampingat.ampingatapplication.MainActivity" />
