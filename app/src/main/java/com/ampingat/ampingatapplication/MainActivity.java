@@ -21,19 +21,8 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity implements ActionBar.TabListener {
 
-    /**
-     * The {@link android.support.v4.view.PagerAdapter} that will provide
-     * fragments for each of the sections. We use a
-     * {@link FragmentPagerAdapter} derivative, which will keep every
-     * loaded fragment in memory. If this becomes too memory intensive, it
-     * may be best to switch to a
-     * {@link android.support.v4.app.FragmentStatePagerAdapter}.
-     */
-    SectionsPagerAdapter mSectionsPagerAdapter;
 
-    /**
-     * The {@link ViewPager} that will host the section contents.
-     */
+    SectionsPagerAdapter mSectionsPagerAdapter;
     ViewPager mViewPager;
 
     @Override
@@ -109,6 +98,12 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
     public void showProfile(MenuItem item){
         Toast.makeText(this, "Welcome to your profile!", Toast.LENGTH_LONG).show();
         Intent i = new Intent(MainActivity.this, WelcomeActivity.class);
+        startActivity(i);
+        finish();
+    }
+
+    public void reporting(MenuItem item){
+        Intent i = new Intent(MainActivity.this, ReportingActivity.class);
         startActivity(i);
         finish();
     }

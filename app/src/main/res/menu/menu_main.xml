@@ -10,6 +10,13 @@
         app:showAsAction="never"
         android:onClick="showProfile"/>
 
+    <item android:id="@+id/action_report"
+        android:title="@string/action_report"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:onClick="reporting"/>
+
+
     <item android:id="@+id/action_about"
         android:title="@string/action_about"
         android:orderInCategory="100"

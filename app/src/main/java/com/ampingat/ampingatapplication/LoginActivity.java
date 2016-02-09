@@ -1,10 +1,7 @@
 package com.ampingat.ampingatapplication;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -72,20 +69,7 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 }
 
-                if (!isOnline(LoginActivity.this)) {
-                    Toast.makeText(LoginActivity.this, "No network connection", Toast.LENGTH_LONG).show();
-                    return;
-                }
                 new attemptLogin().execute();
-            }
-
-            private boolean isOnline(Context mContext) {
-                ConnectivityManager cm = (ConnectivityManager) mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
-                NetworkInfo netInfo = cm.getActiveNetworkInfo();
-                if (netInfo != null && netInfo.isConnectedOrConnecting()) {
-                    return true;
-                }
-                return false;
             }
         });
     }

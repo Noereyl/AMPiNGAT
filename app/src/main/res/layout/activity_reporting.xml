@@ -14,69 +14,81 @@
         android:paddingBottom="100dp"
         android:background="@android:color/background_light">
 
-        <ImageView android:src="@drawable/ic_ampingat"
+
+        <ImageView
             android:layout_width="126dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/ic_ampingat"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="13pt"
+            android:textColor="@color/primary_darker"
+            android:text="REPORT EMERGENCY"/>
 
         <!--  Email Label -->
+
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp">
-            <EditText android:id="@+id/etIdnumber"
+            <EditText android:id="@+id/EmergencyType"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text|number"
-                android:hint="ID Number"
+                android:inputType="text"
+                android:hint="Emergency Type"
                 android:textSize="@dimen/abc_action_bar_content_inset_material"
                 android:textColorHint="#ff1caaa9"
                 android:textColor="#ff800b10" />
         </android.support.design.widget.TextInputLayout>
 
-        <!--  Password Label -->
+
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp">
-
-            <EditText android:id="@+id/etPassword"
+            <EditText android:id="@+id/Location"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:hint="Password"
-                android:textIsSelectable="false"
+                android:inputType="text"
+                android:hint="Location"
                 android:textSize="@dimen/abc_action_bar_content_inset_material"
                 android:textColorHint="#ff1caaa9"
                 android:textColor="#ff800b10" />
         </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp">
+            <EditText android:id="@+id/Remarks"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:hint="Remarks"
+                android:textSize="@dimen/abc_action_bar_content_inset_material"
+                android:textColorHint="#ff1caaa9"
+                android:textColor="#ff800b10" />
+        </android.support.design.widget.TextInputLayout>
+
 
         <android.support.v7.widget.AppCompatButton
-            android:id="@+id/bLogin"
+            android:id="@+id/bSend"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="24dp"
             android:padding="12dp"
-            android:text="Login"
+            android:text="SEND REPORT"
             android:background="#ff1caaa9"
             android:textSize="@dimen/abc_action_bar_content_inset_material"
             android:clickable="true" />
-
-
-        <TextView android:id="@+id/fPassword"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            android:text="Forget Password?"
-            android:gravity="center"
-            android:textSize="16dip"
-            android:textColor="#ff1caaa9"
-            android:linksClickable="false"
-            android:clickable="false" />
 
     </LinearLayout>
 </ScrollView>
