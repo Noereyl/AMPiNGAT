@@ -7,8 +7,10 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.ampingat.ampingatapplication.models.SendReportResponse;
@@ -37,6 +39,8 @@ public class ReportingActivity extends Activity {
     @InjectView(R.id.bSend) Button bSend;
     UserSessionManager session;
 
+    Spinner spinnerSample;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
@@ -44,6 +48,13 @@ public class ReportingActivity extends Activity {
                 .penaltyLog().build());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reporting);
+
+        spinnerSample = (Spinner) findViewById(R.id.spinnerSample);
+        String[] values = getResources().getStringArray(R.array.spinner_values);
+        ArrayAdapter<String> simpleSpinnerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, values);
+        spinnerSample.setAdapter(simpleSpinnerAdapter);
+
+
         ButterKnife.inject(this);
 
         session = new UserSessionManager(getApplicationContext());

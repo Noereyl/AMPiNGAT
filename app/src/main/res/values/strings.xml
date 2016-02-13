@@ -33,4 +33,17 @@
     <string name="title_activity_splash_screen">SplashScreen</string>
     <string name="title_activity_welcome">WelcomeActivity</string>
     <string name="action_settings">Settings</string>
+
+    <string-array name="spinner_values">
+        <item>sample 1</item>
+        <item>sample 2</item>
+        <item>sample 3</item>
+        <item>sample 4</item>
+        <item>sample 5</item>
+        <item>sample 6</item>
+        <item>sample 7</item>
+        <item>sample 8</item>
+        <item>sample 9</item>
+        <item>sample 10</item>
+        </string-array>
 </resources>

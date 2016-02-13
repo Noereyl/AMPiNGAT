@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.ampingat.ampingatapplication" >
+    package="com.ampingat.ampingatapplication">
 
     <uses-sdk
         android:minSdkVersion="16"
@@ -8,10 +8,8 @@
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
-    <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <android:uses-permission
-        android:name="android.permission.READ_EXTERNAL_STORAGE"
-        android:maxSdkVersion="22" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <!-- To access Google+ APIs: -->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -21,47 +19,46 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_ampingat"
         android:label="@string/app_name"
-        android:theme="@style/CustomActionBarTheme" >
-        <activity android:name=".MainActivity" >
-        </activity>
+        android:theme="@style/CustomActionBarTheme">
+        <activity android:name=".MainActivity"/>
         <activity
             android:name=".FirstFloorActivity"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.ampingat.ampingatapplication.MainActivity" />
         </activity>
         <activity
             android:name=".SecondFloorActivity"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.ampingat.ampingatapplication.MainActivity" />
         </activity>
         <activity
             android:name=".ThirdFloorActivity"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.ampingat.ampingatapplication.MainActivity" />
         </activity>
         <activity
             android:name=".FourthFloorActivity"
-            android:largeHeap="true" >
+            android:largeHeap="true">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.ampingat.ampingatapplication.MainActivity" />
         </activity>
         <activity
             android:name=".EapFireActivity"
-            android:parentActivityName=".EapFireActivity" >
+            android:parentActivityName=".EapFireActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.ampingat.ampingatapplication.MainActivity" />
         </activity>
         <activity
             android:name=".EapEarthquakeActivity"
-            android:parentActivityName=".EapEarthquakeActivity" >
+            android:parentActivityName=".EapEarthquakeActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.ampingat.ampingatapplication.MainActivity" />
@@ -71,16 +68,14 @@
             android:configChanges="orientation" />
         <activity
             android:name=".SplashScreen"
-            android:launchMode="singleTop" >
+            android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity" >
-        </activity>
-        <activity android:name=".WelcomeActivity" >
-        </activity>
+        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".WelcomeActivity"></activity>
         <activity
             android:name=".ReportingActivity"
             android:parentActivityName=".MainActivity">

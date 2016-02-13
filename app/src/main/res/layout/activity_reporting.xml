@@ -77,6 +77,11 @@
                 android:textColor="#ff800b10" />
         </android.support.design.widget.TextInputLayout>
 
+        <Spinner
+            android:id="@+id/spinnerSample"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
 
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/bSend"

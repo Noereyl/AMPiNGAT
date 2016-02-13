@@ -30,13 +30,17 @@ import butterknife.InjectView;
 public class LoginActivity extends AppCompatActivity {
 
     JSONParser jsonParser = new JSONParser();
-    private static String url  = "http://192.168.56.1/ampingat/c_json/login";
+    private static String url = "http://192.168.2.201/ampingat/c_json/login";
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_MESSAGE = "message";
 
-    @InjectView(R.id.etIdnumber) EditText etIdnumber;
-    @InjectView(R.id.etPassword) EditText etPassword;
-    @InjectView(R.id.bLogin) Button bLogin;
+    @InjectView(R.id.etIdnumber)
+    EditText etIdnumber;
+    @InjectView(R.id.etPassword)
+    EditText etPassword;
+    @InjectView(R.id.bLogin)
+    Button bLogin;
+
     /*@InjectView(R.id.fPassword) TextView fPassword;*/
     UserSessionManager session;
 
@@ -69,13 +73,24 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 }
 
-                new attemptLogin().execute();
+                new AttemptLogin().execute();
+
+                /*Intent i = new Intent(LoginActivity.this, WelcomeActivity.class);
+                i.putExtra("id_no", "111111");
+                i.putExtra("username", "adminadmin");
+                i.putExtra("password", "111111");
+                i.putExtra("usertype", "1");
+                session.createUserLoginSession("adminadmin", "1", "111111");
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(i);
+                finish();*/
             }
         });
     }
 
 
-    class attemptLogin extends AsyncTask<String, String, Boolean> {
+    class AttemptLogin extends AsyncTask<String, String, Boolean> {
 
         LoginResponse loginResponse = null;
         ProgressDialog progressDialog;
@@ -86,7 +101,8 @@ public class LoginActivity extends AppCompatActivity {
                     R.style.AppTheme_Dark_Dialog);
             progressDialog.setMessage("Authenticating...");
             progressDialog.setIndeterminate(false);
-            progressDialog.setCancelable(true);
+            progressDialog.setCanceledOnTouchOutside(false);
+            progressDialog.setCancelable(false);
             progressDialog.show();
         }
 
@@ -112,13 +128,10 @@ public class LoginActivity extends AppCompatActivity {
             Log.d("Create Response", loginResponse.message);
 
             try {
-                if (loginResponse.success == 1)
-                {
+                if (loginResponse.success == 1) {
                     Log.d("Successfully Login!", json.toString());
                     return (loginResponse.success == 1 ? true : false);
-                }
-                else
-                {
+                } else {
                     return false;
                 }
             } catch (Exception e) {
@@ -132,11 +145,11 @@ public class LoginActivity extends AppCompatActivity {
             if (success) {
               /*  Intent i = new Intent(LoginActivity.this, MainActivity.class);*/
                 Intent i = new Intent(LoginActivity.this, WelcomeActivity.class);
-                i.putExtra("id_no",loginResponse.user.idNo);
-                i.putExtra("username",loginResponse.user.username);
-                i.putExtra("password",loginResponse.user.password);
-                i.putExtra("usertype",loginResponse.user.usertype);
-                session.createUserLoginSession(loginResponse.user.username+ " " + loginResponse.user.password, loginResponse.user.usertype, loginResponse.user.idNo);
+                i.putExtra("id_no", loginResponse.user.idNo);
+                i.putExtra("username", loginResponse.user.username);
+                i.putExtra("password", loginResponse.user.password);
+                i.putExtra("usertype", loginResponse.user.usertype);
+                session.createUserLoginSession(loginResponse.user.username + " " + loginResponse.user.password, loginResponse.user.usertype, loginResponse.user.idNo);
                 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(i);

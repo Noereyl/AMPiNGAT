@@ -1,5 +1,6 @@
 package com.ampingat.ampingatapplication;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,7 +15,6 @@ public class UserSessionManager {
     SharedPreferences pref;
     SharedPreferences.Editor editor;
     Context context;
-    int PRIVATE_MODE = 0;
 
     private static final String PREFER_NAME = "SessionLogin";
     private static final String IS_USER_LOGIN = "IsUserLoggedIn";
@@ -24,25 +24,20 @@ public class UserSessionManager {
 
     public UserSessionManager(Context context) {
         this.context = context;
-        pref = context.getSharedPreferences(PREFER_NAME, PRIVATE_MODE);
-        editor = pref.edit();
+        pref = context.getSharedPreferences(PREFER_NAME, Context.MODE_PRIVATE);
     }
     public void createUserLoginSession (String name, String userid, String usertype) {
+        editor = pref.edit();
         editor.putBoolean(IS_USER_LOGIN, true);
         editor.putString(KEY_NAME, name);
         editor.putString(KEY_ID_NUMBER, userid);
         editor.putString(KEY_TYPE, usertype);
-        editor.commit();
+        editor.apply();
     }
 
-    public void checkLogin(){
+    public boolean checkLogin(){
         // Check login status
-        if(!this.isUserLoggedIn()){
-            Intent i = new Intent(context, LoginActivity.class);
-            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            context.startActivity(i);
-        }
+        return this.isUserLoggedIn();
     }
 
     public HashMap<String, String> getUserDetails () {
@@ -57,8 +52,6 @@ public class UserSessionManager {
         editor.clear();
         editor.commit();
         Intent i = new Intent(context, LoginActivity.class);
-        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(i);
     }
 
