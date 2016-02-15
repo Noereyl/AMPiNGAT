@@ -1,6 +1,9 @@
 package com.ampingat.ampingatapplication;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -9,6 +12,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,7 +20,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.ampingat.ampingatapplication.models.SendReportResponse;
+import com.google.gson.Gson;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 
 
@@ -26,28 +39,19 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
     SectionsPagerAdapter mSectionsPagerAdapter;
     ViewPager mViewPager;
     UserSessionManager session;
+    JSONParser jsonParser = new JSONParser();
+    private static String url  = "http://172.20.10.2/ampingat/c_json/logout";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         session = new UserSessionManager(getApplicationContext());
-        Toast.makeText(getApplicationContext(),
-                "User Login Status: " + session.isUserLoggedIn(),
-                Toast.LENGTH_LONG).show();
-        if(session.checkLogin())
-            finish();
-
-        HashMap<String, String> user = session.getUserDetails();
-
-        String userid = user.get(UserSessionManager.KEY_ID_NUMBER);
-        String name = user.get(UserSessionManager.KEY_NAME);
-        String type = user.get(UserSessionManager.KEY_TYPE);
 
         // Set up the action bar.
         final ActionBar actionBar = getSupportActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-        
+
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
@@ -78,6 +82,66 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
                             .setTabListener(this));
         }
     }
+
+    @SuppressWarnings("deprecation")
+    class AttemptLogout extends AsyncTask<String, String, Boolean> {
+
+        SendReportResponse sendReportResponse = null;
+        ProgressDialog progressDialog;
+
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressDialog = new ProgressDialog(MainActivity.this,
+                    R.style.AppTheme_Dark_Dialog);
+            progressDialog.setMessage("Logging Out...");
+            progressDialog.setIndeterminate(false);
+            progressDialog.setCanceledOnTouchOutside(false);
+            progressDialog.setCancelable(true);
+            progressDialog.show();
+        }
+
+        @Override
+        protected Boolean doInBackground(String... arg) {
+
+            HashMap<String, String> user = session.getUserDetails();
+
+            List<NameValuePair> params = new ArrayList<NameValuePair>();
+            String userid = user.get(UserSessionManager.KEY_TYPE);
+            params.add(new BasicNameValuePair("id_no", userid));
+            Log.d("request!", "starting");
+
+            JSONObject json = jsonParser.makeHttpRequest(url, "POST", params);
+            sendReportResponse = new Gson().fromJson(json.toString(), SendReportResponse.class);
+
+            Log.d("Create Response", sendReportResponse.message);
+
+            try {
+                if (sendReportResponse.success == 1)
+                {
+                    Log.d("Successfully Login!", json.toString());
+                    return (sendReportResponse.success == 1 ? true : false);
+                }
+                else
+                {
+                    return false;
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            return false;
+        }
+
+        protected void onPostExecute(Boolean success) {
+            progressDialog.dismiss();
+            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+            Toast.makeText(MainActivity.this, sendReportResponse.message, Toast.LENGTH_LONG).show();
+            startActivity(intent);
+            finish();
+        }
+
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -125,9 +189,12 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
 
 
     public void logout(MenuItem item) {
-        Intent i = new Intent(MainActivity.this, LoginActivity.class);
-        startActivity(i);
-        finish();
+        SharedPreferences SM = getSharedPreferences("LoginPrefs", 0);
+        SharedPreferences.Editor edit = SM.edit();
+        edit.putBoolean("IsUserLoggedIn", false);
+        edit.commit();
+        new AttemptLogout().execute();
+
     }
 
 
@@ -227,29 +294,5 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
             return rootView;
 
         }
-        public void firstFloorMap(View view)
-        {
-            Intent intent = new Intent(view.getContext(), FirstFloorActivity.class);
-            startActivity(intent);
-        }
-
-        public void secondFloorMap(View view)
-        {
-            Intent intent = new Intent(view.getContext(), SecondFloorActivity.class);
-            startActivity(intent);
-        }
-
-        public void thirdFloorMap(View view)
-        {
-            Intent intent = new Intent(view.getContext(), ThirdFloorActivity.class);
-            startActivity(intent);
-        }
-        public void fourthFloorMap(View view)
-        {
-            Intent intent = new Intent(view.getContext(), FourthFloorActivity.class);
-            startActivity(intent);
-        }
-
     }
 }
-

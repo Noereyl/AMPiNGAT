@@ -11,23 +11,23 @@
         android:id="@+id/Thumbnail"
         android:layout_alignParentLeft="true"
         android:adjustViewBounds="true"
-        android:padding="5dp"
+        android:padding="10dp"
         android:src="@drawable/ic_ampingat"/>
 
     <TextView
         android:id="@+id/videoTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:textSize="14sp"
         android:layout_toRightOf="@id/Thumbnail"
         android:padding="5dp"
-        android:textColor="@android:color/white" />
+        android:textColor="@color/primary_dark" />
 
     <TextView
         android:id="@+id/videoSize"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
+        android:textSize="10sp"
         android:layout_toRightOf="@+id/Thumbnail"
         android:layout_below="@+id/videoTitle"
         android:padding="5dp"
@@ -37,7 +37,7 @@
         android:id="@+id/videoLength"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
+        android:textSize="10sp"
         android:layout_toRightOf="@+id/Thumbnail"
         android:layout_below="@+id/videoSize"
         android:padding="5dp"
