@@ -8,10 +8,16 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.ampingat.ampingatapplication.JSONParser;
+import com.ampingat.ampingatapplication.MainActivity;
+import com.ampingat.ampingatapplication.R;
+import com.ampingat.ampingatapplication.UserSessionManager;
 import com.ampingat.ampingatapplication.models.SendReportResponse;
 import com.google.gson.Gson;
 
@@ -30,13 +36,18 @@ import butterknife.InjectView;
 public class EmergencyReportActivity extends Activity {
 
     JSONParser jsonParser = new JSONParser();
-//    private static String url  = "http://192.168.56.1/ampingat/c_report";
+    //    private static String url  = "http://192.168.56.1/ampingat/c_report";
     private static String url  = "http://172.20.10.2/ampingat/c_report";
-    @InjectView(R.id.EmergencyType) EditText etEtype;
-    @InjectView(R.id.Location) EditText etLocation;
-    @InjectView(R.id.Remarks) EditText etRemarks;
-    @InjectView(R.id.bSend) Button bSend;
-    @InjectView(R.id.bCancel) Button bCancel;
+    @InjectView(R.id.Location)
+    Spinner etLocation;
+    @InjectView(R.id.Remarks)
+    EditText etRemarks;
+    @InjectView(R.id.bSend)
+    Button bSend;
+    @InjectView(R.id.bCancel)
+    Button bCancel;
+    @InjectView(R.id.etype)
+    Spinner etype;
     UserSessionManager session;
 
     @Override
@@ -47,6 +58,16 @@ public class EmergencyReportActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_emergency_report);
         ButterKnife.inject(this);
+
+        etype = (Spinner) findViewById(R.id.etype);
+        String[] values = getResources().getStringArray(R.array.Emergencytype);
+        ArrayAdapter<String> simpleSpinnerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, values);
+        etype.setAdapter(simpleSpinnerAdapter);
+
+        etLocation = (Spinner) findViewById(R.id.Location);
+        String[] locval = getResources().getStringArray(R.array.LocationName);
+        ArrayAdapter<String> locationAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, locval);
+        etype.setAdapter(simpleSpinnerAdapter);
 
         session = new UserSessionManager(getApplicationContext());
 
@@ -62,25 +83,12 @@ public class EmergencyReportActivity extends Activity {
         bSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String type = etEtype.getText().toString();
-                String location = etLocation.getText().toString();
-                if (type.length() == 0) {
-                    etEtype.setError("This field is empty!");
-                    return;
-                }
-                if (location.length() == 0) {
-                    etLocation.setError("This field is empty!");
-                    return;
-                }
-
-                new attemptSend().execute();
+                new AttemptSend().execute();
             }
         });
     }
 
-
-
-    class attemptSend extends AsyncTask<String, String, Boolean> {
+    class AttemptSend extends AsyncTask<String, String, Boolean> {
 
         SendReportResponse sendReportResponse = null;
         ProgressDialog progressDialog;
@@ -99,8 +107,8 @@ public class EmergencyReportActivity extends Activity {
         protected Boolean doInBackground(String... arg) {
 
             HashMap<String, String> user = session.getUserDetails();
-            String type = etEtype.getText().toString();
-            String location = etLocation.getText().toString();
+            String type = etype.getSelectedItem().toString();
+            String location = etLocation.getSelectedItem().toString();
             String remarks = etRemarks.getText().toString();
             String message = type + " at " + location + " .. " + remarks;
 
@@ -139,9 +147,8 @@ public class EmergencyReportActivity extends Activity {
 
         protected void onPostExecute(Boolean success) {
             progressDialog.dismiss();
-            etEtype.setText("");
             etRemarks.setText("");
-            etLocation.setText("");
+
 
             if (success) {
                 Toast.makeText(EmergencyReportActivity.this, sendReportResponse.message, Toast.LENGTH_LONG).show();

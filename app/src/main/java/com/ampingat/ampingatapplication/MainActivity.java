@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
 
     public void showProfile(MenuItem item){
         Toast.makeText(this, "Welcome to your profile!", Toast.LENGTH_LONG).show();
-        Intent i = new Intent(MainActivity.this, WelcomeActivity.class);
+        Intent i = new Intent(MainActivity.this, UserProfileActivity.class);
         startActivity(i);
         finish();
     }

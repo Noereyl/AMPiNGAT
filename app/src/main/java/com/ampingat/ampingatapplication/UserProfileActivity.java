@@ -9,10 +9,13 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ampingat.ampingatapplication.MainActivity;
+import com.ampingat.ampingatapplication.R;
+import com.ampingat.ampingatapplication.UserSessionManager;
+
 import java.util.HashMap;
 
-
-public class WelcomeActivity extends Activity {
+public class UserProfileActivity extends Activity {
 
     UserSessionManager session;
     Button btnLogout, btnHome;
@@ -20,7 +23,7 @@ public class WelcomeActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_welcome);
+        setContentView(R.layout.activity_user_info);
 
         session = new UserSessionManager(getApplicationContext());
         TextView lbName = (TextView) findViewById(R.id.lblName);
@@ -32,7 +35,7 @@ public class WelcomeActivity extends Activity {
         Toast.makeText(getApplicationContext(),
                 "User Login Status:" + session.isUserLoggedIn(), Toast.LENGTH_LONG).show();
 
-        if(session.checkLogin())
+        if (session.checkLogin())
             finish();
 
         HashMap<String, String> user = session.getUserDetails();
@@ -56,7 +59,7 @@ public class WelcomeActivity extends Activity {
         btnHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(WelcomeActivity.this, MainActivity.class);
+                Intent i = new Intent(UserProfileActivity.this, MainActivity.class);
                 startActivity(i);
                 finish();
             }

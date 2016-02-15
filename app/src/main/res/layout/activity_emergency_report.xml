@@ -3,16 +3,17 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:fitsSystemWindows="true"
-    android:background="@android:color/background_light">
+    android:background="@color/white">
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingTop="10dp"
         android:paddingLeft="24dp"
         android:paddingRight="24dp"
-        android:paddingBottom="100dp"
-        android:background="@android:color/background_light">
+        android:paddingBottom="30dp"
+        android:background="@color/white">
 
 
         <ImageView
@@ -24,42 +25,37 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="13pt"
+            android:textSize="12pt"
             android:textColor="@color/primary_darker"
-            android:layout_margin="@dimen/abc_action_bar_content_inset_material"
+            android:layout_margin="14sp"
             android:text="REPORT EMERGENCY"
+            android:layout_marginBottom="10dp"
             android:fontFamily="@android:string/dialog_alert_title" />
 
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:text="Emergency Type"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp">
-            <EditText android:id="@+id/EmergencyType"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text"
-                android:hint="Emergency Type"
-                android:textSize="@dimen/abc_action_bar_content_inset_material"
-                android:textColorHint="#ff1caaa9"
-                android:textColor="@color/primary_darker" />
-        </android.support.design.widget.TextInputLayout>
+            android:textSize="16sp"
+            android:textColor="@color/primary_dark"/>
+
+        <android.support.v7.widget.AppCompatSpinner
+            android:id="@+id/etype"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
 
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:text="Location"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp">
-            <EditText android:id="@+id/Location"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text"
-                android:hint="Location"
-                android:textSize="@dimen/abc_action_bar_content_inset_material"
-                android:textColorHint="#ff1caaa9"
-                android:textColor="@color/primary_darker" />
-        </android.support.design.widget.TextInputLayout>
+            android:textSize="16sp"
+            android:textColor="@color/primary_dark"/>
+
+        <android.support.v7.widget.AppCompatSpinner
+            android:id="@+id/Location"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
 
         <android.support.design.widget.TextInputLayout
@@ -89,7 +85,6 @@
             android:background="#ff1caaa9"
             android:textSize="@dimen/abc_action_bar_content_inset_material"
             android:clickable="true" />
-
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/bCancel"
             android:layout_width="fill_parent"
@@ -100,9 +95,5 @@
             android:background="@color/primary_darker"
             android:textSize="@dimen/abc_action_bar_content_inset_material"
             android:clickable="true" />
-
-
-
-
     </LinearLayout>
 </ScrollView>

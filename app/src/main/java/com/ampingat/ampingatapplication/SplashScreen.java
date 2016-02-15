@@ -20,10 +20,6 @@ public class SplashScreen extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
-        session = new UserSessionManager(getApplicationContext());
-        if(session.checkLogin())
-            finish();
-
         textView = (TextView) findViewById(R.id.status);
         progressBar = (ProgressBar) findViewById((R.id.progressBar));
         new Thread(new Runnable() {
@@ -43,8 +39,15 @@ public class SplashScreen extends Activity {
                     }
                 }
                 if (progressStatus == 100) {
-                    Intent i = new Intent(SplashScreen.this, LoginActivity.class);
-                    startActivity(i);
+                    session = new UserSessionManager(getApplicationContext());
+                    Intent intent;
+                    if (session.checkLogin()) {
+                        intent = new Intent(SplashScreen.this, MainActivity.class);
+                    } else {
+                        intent = new Intent(SplashScreen.this, LoginActivity.class);
+                    }
+                    startActivity(intent);
+                    finish();
                 }
             }
         }).start();
