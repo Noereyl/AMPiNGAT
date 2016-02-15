@@ -81,11 +81,7 @@
         <activity android:name=".UserProfileActivity" >
         </activity>
         <activity
-            android:name=".EmergencyReportActivity"
-            android:parentActivityName=".MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.ampingat.ampingatapplication.MainActivity" />
+            android:name=".EmergencyReportActivity">
         </activity>
         <activity
             android:name=".ChangePasswordActivity"

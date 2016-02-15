@@ -8,16 +8,13 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.ampingat.ampingatapplication.JSONParser;
-import com.ampingat.ampingatapplication.MainActivity;
-import com.ampingat.ampingatapplication.R;
-import com.ampingat.ampingatapplication.UserSessionManager;
 import com.ampingat.ampingatapplication.models.SendReportResponse;
 import com.google.gson.Gson;
 
@@ -38,8 +35,10 @@ public class EmergencyReportActivity extends Activity {
     JSONParser jsonParser = new JSONParser();
     //    private static String url  = "http://192.168.56.1/ampingat/c_report";
     private static String url  = "http://172.20.10.2/ampingat/c_report";
-    @InjectView(R.id.Location)
-    Spinner etLocation;
+    @InjectView(R.id.etFloor)
+    Spinner floor;
+    @InjectView(R.id.etRoom)
+    Spinner room;
     @InjectView(R.id.Remarks)
     EditText etRemarks;
     @InjectView(R.id.bSend)
@@ -60,14 +59,18 @@ public class EmergencyReportActivity extends Activity {
         ButterKnife.inject(this);
 
         etype = (Spinner) findViewById(R.id.etype);
-        String[] values = getResources().getStringArray(R.array.Emergencytype);
-        ArrayAdapter<String> simpleSpinnerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, values);
-        etype.setAdapter(simpleSpinnerAdapter);
+        floor = (Spinner) findViewById(R.id.etFloor);
+        room = (Spinner) findViewById(R.id.etRoom);
 
-        etLocation = (Spinner) findViewById(R.id.Location);
-        String[] locval = getResources().getStringArray(R.array.LocationName);
-        ArrayAdapter<String> locationAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, locval);
-        etype.setAdapter(simpleSpinnerAdapter);
+
+        String[] typeval = getResources().getStringArray(R.array.Emergencytype);
+        String[] floorval = getResources().getStringArray(R.array.FloorNumber);
+        String[] roomval = getResources().getStringArray(R.array.FourthFloorRooms);
+
+        etype.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, typeval));
+        floor.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, floorval));
+        room.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, roomval));
+
 
         session = new UserSessionManager(getApplicationContext());
 
@@ -108,9 +111,10 @@ public class EmergencyReportActivity extends Activity {
 
             HashMap<String, String> user = session.getUserDetails();
             String type = etype.getSelectedItem().toString();
-            String location = etLocation.getSelectedItem().toString();
+            String floors = floor.getSelectedItem().toString();
+            String rooms = room.getSelectedItem().toString();
             String remarks = etRemarks.getText().toString();
-            String message = type + " at " + location + " .. " + remarks;
+            String message = type + " at " + floors + " - " + rooms + "..." + remarks;
 
 
             List<NameValuePair> params = new ArrayList<NameValuePair>();

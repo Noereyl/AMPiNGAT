@@ -34,6 +34,7 @@
     <string name="title_activity_welcome">WelcomeActivity</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_emergency_report">EmergencyReportActivity</string>
+    <string name="title_activity_change_password">Change Password</string>
 
     <string-array name="Emergencytype">
         <item name="FIRE">FIRE</item>
@@ -42,11 +43,89 @@
         <item name="MAJOR INJURY">MAJOR INJURY</item>
     </string-array>
 
-    <string-array name="LocationName">
-        <item name="FIRST FLOOR">FIRST FLOOR</item>
-        <item name="SECOND FLOOR">SECOND FLOOR</item>
-        <item name="THIRD FLOOR">THIRD FLOOR</item>
-        <item name="FOURTHFLOOR">FOURTH FLOOR</item>
+    <string-array name="FloorNumber">
+        <item name="First Floor">FIRST FLOOR</item>
+        <item name="Second Floor">SECOND FLOOR</item>
+        <item name="Third Floor">THIRD FLOOR</item>
+        <item name="FOURTH FLOOR">FOURTH FLOOR</item>
     </string-array>
-    <string name="title_activity_change_password">ChangePasswordActivity</string>
+
+    <string-array name="FourthFloorRooms">
+        <item name="Deans Office">DEANS OFFICE</item>
+        <item name="College Library">COLLEGE LIBRARY</item>
+        <item name="Room 405">R00M 405</item>
+        <item name="CHS Room">CHS ROOM</item>
+        <item name="Electrical Room">ELECTRICAL ROOM</item>
+        <item name="ComLab 4">COMPUTER LABORATORY 4</item>
+        <item name="College Library">COLLEGE LIBRARY</item>
+        <item name="MassCom Room">MASSCOM ROOM</item>
+        <item name="Accounting Lab">ACCOUNTING LAB</item>
+        <item name="Room 405">ROOM 406</item>
+        <item name="Physics Lab">PHYSICS LAB</item>
+        <item name="OSAD Office">OSAD OFFICE</item>
+        <item name="Chemistry Lab">CHEMISTRY LABORATORY</item>
+        <item name="Caregiver Room">CAREGIVER ROOM</item>
+        <item name="ITE Center">ITE CENTER</item>
+        <item name="Room 417">ROOM 417</item>
+        <item name="Room 418">ROOM 418</item>
+        <item name="BSBA Office">BSBA OFFICE</item>
+        <item name="CrimLab">CRIMINOLOGY LABORATORY</item>
+    </string-array>
+
+    <string-array name="ThirdFloorRooms">
+        <item name="HRMD Office">HRMD OFFICE</item>
+        <item name="POD Office">P.O.D OFFICE</item>
+        <item name="Room 305">ROOM 305</item>
+        <item name="Room 307">ROOM 307</item>
+        <item name="Room 309">ROOM 309</item>
+        <item name="ComLab 3">COMPUTER LABORATORY 3</item>
+        <item name="High School Library">HIGH SCHOOL LIBRARY</item>
+        <item name="Room 302">ROOM 302</item>
+        <item name="Room 304">ROOM 304</item>
+        <item name="Room 306">ROOM 306</item>
+        <item name="Room 308">ROOM 308</item>
+        <item name="H.E Room">H.E ROOM</item>
+        <item name="Room 312">ROOM 312</item>
+        <item name="Speeh Lab">SPEECH LABORATORY</item>
+        <item name="Room 315">ROOM 315</item>
+        <item name="High School Faculty">HIGH SCHOOL FACULTY</item>
+        <item name="Room 317">ROOM 317 MRC</item>
+        <item name="Room 318">ROOM 318</item>
+        <item name="Room 319">ROOM 319</item>
+        <item name="Room 320">ROOM 320</item>
+        <item name="Room 321">ROOM 321</item>
+        <item name="Room 322">ROOM 322</item>
+        <item name="Room 323">ROOM 323</item>
+        <item name="Room 324">ROOM 324</item>
+        <item name="Room 325">ROOM 325</item>
+
+    </string-array>
+
+    <string-array name="SecondFloorRooms">
+        <item name="Grade Schoool Faculty">GRADE SCHOOL FACULTY ROOM</item>
+        <item name="Room 202">ROOM 202</item>
+        <item name="Room 203">ROOM 203</item>
+        <item name="Room 204">ROOM 204</item>
+        <item name="Room 205">ROOM 205</item>
+        <item name="Room 206">ROOM 206</item>
+        <item name="Room 207">ROOM 207</item>
+        <item name="Room 208">ROOM 208</item>
+        <item name="Room 209">ROOM 209</item>
+        <item name="Room 210">ROOM 210</item>
+        <item name="Room 211">ROOM 211</item>
+        <item name="Room 212">ROOM 212</item>
+        <item name="ComLab 2">COMPUTER LABORATORY 2</item>
+        <item name="Room 215">ROOM 215</item>
+        <item name="Room 216">ROOM 216</item>
+        <item name="Room 217">ROOM 217</item>
+        <item name="Room 218">ROOM 218</item>
+        <item name="Room 219">ROOM 219</item>
+        <item name="Room 220">ROOM 220</item>
+        <item name="Research Center">RESEARCH CENTER</item>
+        <item name="CJF ComLab">CJF COMLAB</item>
+        <item name="CJF Office">CJF OFFICE</item>
+        <item name="Accreditation Office">ACCREDITATION OFFICE</item>
+        <item name="Room 225">ROOM 225</item>
+        <item name="Social Work Lab">SOCIAL WORK LAB</item>
+    </string-array>
 </resources>

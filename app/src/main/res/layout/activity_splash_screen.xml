@@ -13,8 +13,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/splash"
         android:src="@drawable/ic_ampingat"
-        android:paddingTop="15dp"
-        android:paddingBottom="10dp"
+        android:paddingTop="70dp"
+        android:paddingBottom="20dp"
         android:layout_gravity="center_horizontal"
         />
     <TextView

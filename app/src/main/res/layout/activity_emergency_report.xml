@@ -19,15 +19,15 @@
         <ImageView
             android:layout_width="126dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
+            android:layout_marginBottom="20dp"
             android:layout_gravity="center_horizontal"
             android:src="@drawable/ic_ampingat"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="12pt"
+            android:textSize="16sp"
             android:textColor="@color/primary_darker"
-            android:layout_margin="14sp"
             android:text="REPORT EMERGENCY"
             android:layout_marginBottom="10dp"
             android:fontFamily="@android:string/dialog_alert_title" />
@@ -42,18 +42,32 @@
         <android.support.v7.widget.AppCompatSpinner
             android:id="@+id/etype"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"/>
 
 
         <TextView
-            android:text="Location"
+            android:text="Floor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16sp"
             android:textColor="@color/primary_dark"/>
 
         <android.support.v7.widget.AppCompatSpinner
-            android:id="@+id/Location"
+            android:id="@+id/etFloor"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"/>
+
+        <TextView
+            android:text="Room"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="@color/primary_dark"/>
+
+        <android.support.v7.widget.AppCompatSpinner
+            android:id="@+id/etRoom"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
