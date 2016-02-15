@@ -20,6 +20,7 @@ public class LoginResponse {
     @SerializedName("user")
     @Expose
     public Student user;
+
     @SerializedName("videofiles")
     @Expose
     public List<VideoFile> videofiles = new ArrayList<VideoFile>();

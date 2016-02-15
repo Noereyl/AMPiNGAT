@@ -11,8 +11,18 @@ public class VideoFile {
     @SerializedName("vidname")
     @Expose
     public String vidname;
+    @SerializedName("videourl")
+    @Expose
+    public String videourl;
     @SerializedName("videopath")
     @Expose
     public String videopath;
+    @SerializedName("videosize")
+    @Expose
+    public int videosize;
+
+    public VideoFile(String fileUrl) {
+        this.videourl = fileUrl;
+    }
 
 }

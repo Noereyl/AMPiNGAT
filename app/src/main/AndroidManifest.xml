@@ -87,6 +87,8 @@
             android:name=".ChangePasswordActivity"
             android:label="@string/title_activity_change_password" >
         </activity>
+
+        <service android:name=".services.DownloadIntentService"/>
     </application>
 
 </manifest>

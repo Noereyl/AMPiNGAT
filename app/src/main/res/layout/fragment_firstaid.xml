@@ -3,18 +3,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
     android:background="#000">
 
     <TextView
         android:text="LIST OF FIRST AID VIDEOS"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:textSize="30sp"
-        android:layout_gravity="center"
+        android:textSize="20sp"
         android:textAllCaps="true"
         android:textColor="#fffdfdfe" />
 
@@ -26,6 +21,6 @@
         android:divider="@color/background_material_light"
         android:fastScrollStyle="@color/abc_secondary_text_material_light"
         android:layout_gravity="center"
-        android:layout_marginTop="50dp"/>
+        android:layout_marginTop="20dp"/>
 
 </FrameLayout>

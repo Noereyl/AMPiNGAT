@@ -13,6 +13,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.ampingat.ampingatapplication.models.LoginResponse;
+import com.ampingat.ampingatapplication.models.VideoFile;
+import com.ampingat.ampingatapplication.services.DownloadIntentService;
 import com.google.gson.Gson;
 
 import org.apache.http.NameValuePair;
@@ -30,6 +32,7 @@ import butterknife.InjectView;
 public class LoginActivity extends Activity {
 
     JSONParser jsonParser = new JSONParser();
+    ProgressDialog progressDialog;
     private static String url  = "http://172.20.10.2/ampingat/c_json/login";
     //    private static String url  = "http://192.168.56.1/ampingat/c_json/login";
     private static final String TAG_SUCCESS = "success";
@@ -70,6 +73,37 @@ public class LoginActivity extends Activity {
                     etPassword.setError("Please Enter correct password!");
                     return;
                 }
+
+                ArrayList<VideoFile> videoFiles = new ArrayList<VideoFile>();
+                videoFiles.add(new VideoFile("http://172.20.10.2/htdocs/ampingat/uploads/Adult_CPR_-_Lay_Rescuer.mp4"));
+                videoFiles.add(new VideoFile("http://172.20.10.2/htdocs/ampingat/uploads/Amputation.mp4"));
+
+                DownloadIntentService downloadIntentService = new DownloadIntentService();
+                DownloadIntentService.setSources(videoFiles);
+                downloadIntentService.setDownloadProgressCallback(new DownloadIntentService.DownloadProgressCallback() {
+                    @Override
+                    public void onDownloadProgress(int byteTransfer, int byteDownloaded) { //SECOND TO OCCUR
+                        Log.e("DownloadProgress", "byteTransfer:" + byteTransfer + ", byteDownloaded:" + byteDownloaded);
+                    }
+
+                    @Override
+                    public void onDownloadPrepare(int byteTotalSize, String filename) { //FIRST TO OCCUR
+                        Log.e("DownloadProgress", "byteTotalSize:" + byteTotalSize + ", filename:" + filename);
+                    }
+
+                    @Override
+                    public void onDownloadComplete() {
+                        Log.e("DownloadProgress", "onDownloadComplete");
+                    }
+
+                    @Override
+                    public void onDownloadError() {
+                        Log.e("DownloadProgress", "onDownloadError");
+                    }
+                });
+                Intent downloadIntent = new Intent(LoginActivity.this, downloadIntentService.getClass());
+                startService(downloadIntent);
+
                 new AttemptLogin().execute();
             }
         });
@@ -79,8 +113,6 @@ public class LoginActivity extends Activity {
     class AttemptLogin extends AsyncTask<String, String, Boolean> {
 
         LoginResponse loginResponse = null;
-        ProgressDialog progressDialog;
-
         protected void onPreExecute() {
             super.onPreExecute();
             progressDialog = new ProgressDialog(LoginActivity.this,

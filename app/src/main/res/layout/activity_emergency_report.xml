@@ -19,14 +19,13 @@
         <ImageView
             android:layout_width="126dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="24dp"
             android:layout_gravity="center_horizontal"
             android:src="@drawable/ic_ampingat"/>
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:textColor="@color/primary_darker"
             android:text="REPORT EMERGENCY"
             android:layout_marginBottom="10dp"
@@ -42,8 +41,7 @@
         <android.support.v7.widget.AppCompatSpinner
             android:id="@+id/etype"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="10dp"/>
+            android:layout_height="match_parent" />
 
 
         <TextView
@@ -54,10 +52,9 @@
             android:textColor="@color/primary_dark"/>
 
         <android.support.v7.widget.AppCompatSpinner
-            android:id="@+id/etFloor"
+            android:id="@+id/Location"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="10dp"/>
+            android:layout_height="match_parent" />
 
         <TextView
             android:text="Room"
@@ -67,7 +64,7 @@
             android:textColor="@color/primary_dark"/>
 
         <android.support.v7.widget.AppCompatSpinner
-            android:id="@+id/etRoom"
+            android:id="@+id/Room"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 

@@ -7,13 +7,13 @@
     <item android:id="@+id/action_user_profile"
         android:title="@string/action_user_profile"
         android:orderInCategory="100"
-        app:showAsAction="always"
+        app:showAsAction="never"
         android:onClick="showProfile" />
 
     <item android:id="@+id/action_report"
         android:title="@string/action_report"
         android:orderInCategory="100"
-        app:showAsAction="always"
+        app:showAsAction="never"
         android:onClick="reporting"/>
 
 
@@ -25,6 +25,6 @@
     <item android:id="@+id/action_signout"
         android:title="@string/action_signout"
         android:orderInCategory="100"
-        app:showAsAction="always"
+        app:showAsAction="never"
         android:onClick="logout"/>
 </menu>

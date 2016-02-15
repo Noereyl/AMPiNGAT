@@ -35,10 +35,10 @@ public class EmergencyReportActivity extends Activity {
     JSONParser jsonParser = new JSONParser();
     //    private static String url  = "http://192.168.56.1/ampingat/c_report";
     private static String url  = "http://172.20.10.2/ampingat/c_report";
-    @InjectView(R.id.etFloor)
-    Spinner floor;
-    @InjectView(R.id.etRoom)
-    Spinner room;
+    @InjectView(R.id.Location)
+    Spinner etLocation;
+    @InjectView(R.id.Room)
+    Spinner etRoom;
     @InjectView(R.id.Remarks)
     EditText etRemarks;
     @InjectView(R.id.bSend)
@@ -59,18 +59,40 @@ public class EmergencyReportActivity extends Activity {
         ButterKnife.inject(this);
 
         etype = (Spinner) findViewById(R.id.etype);
-        floor = (Spinner) findViewById(R.id.etFloor);
-        room = (Spinner) findViewById(R.id.etRoom);
+        String[] values = getResources().getStringArray(R.array.Emergencytype);
+        ArrayAdapter<String> simpleSpinnerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, values);
+        etype.setAdapter(simpleSpinnerAdapter);
 
+        etLocation = (Spinner) findViewById(R.id.Location);
+        String[] locval = getResources().getStringArray(R.array.FloorNumber);
+        ArrayAdapter<String> locationAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, locval);
+        etLocation.setAdapter(locationAdapter);
 
-        String[] typeval = getResources().getStringArray(R.array.Emergencytype);
-        String[] floorval = getResources().getStringArray(R.array.FloorNumber);
-        String[] roomval = getResources().getStringArray(R.array.FourthFloorRooms);
+        etRoom =  (Spinner) findViewById(R.id.Room);
 
-        etype.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, typeval));
-        floor.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, floorval));
-        room.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, roomval));
+        etLocation.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String floorval = String.valueOf(etLocation.getSelectedItem());
+                String[] fourthfloor = getResources().getStringArray(R.array.FourthFloorRooms);
+                String[] thirdfloor = getResources().getStringArray(R.array.ThirdFloorRooms);
+                String[] secondfloor = getResources().getStringArray(R.array.SecondFloorRooms);
 
+                if(floorval.contentEquals("FOURTH FLOOR")) {
+                    etRoom.setAdapter(new ArrayAdapter<String>(EmergencyReportActivity.this, android.R.layout.simple_list_item_1, fourthfloor));
+                } else if (floorval.contentEquals("THIRD FLOOR")) {
+                    etRoom.setAdapter(new ArrayAdapter<String>(EmergencyReportActivity.this, android.R.layout.simple_list_item_1, thirdfloor));
+                } else if (floorval.contentEquals("SECOND FLOOR")) {
+                    etRoom.setAdapter(new ArrayAdapter<String>(EmergencyReportActivity.this, android.R.layout.simple_list_item_1, secondfloor));
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
         session = new UserSessionManager(getApplicationContext());
 
@@ -111,10 +133,10 @@ public class EmergencyReportActivity extends Activity {
 
             HashMap<String, String> user = session.getUserDetails();
             String type = etype.getSelectedItem().toString();
-            String floors = floor.getSelectedItem().toString();
-            String rooms = room.getSelectedItem().toString();
+            String room = etRoom.getSelectedItem().toString();
+            String location = etLocation.getSelectedItem().toString();
             String remarks = etRemarks.getText().toString();
-            String message = type + " at " + floors + " - " + rooms + "..." + remarks;
+            String message = type + " at " + location + " - " + room + "..." + remarks;
 
 
             List<NameValuePair> params = new ArrayList<NameValuePair>();

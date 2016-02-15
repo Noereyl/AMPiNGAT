@@ -53,7 +53,7 @@ public class FirstAidFragment extends Fragment  {
                 data.setFileSize(size);
                 data.setFileLength(length);
                 data.setFileImage(image);
-                data.setFilePath(Environment.getExternalStorageDirectory() + "/Download/AmpingatVid/Adult CPR - Lay Rescuer.mp4");
+                data.setFilePath(Environment.getExternalStorageDirectory() + "/AMPiNGAT/Adult_CPR_-_Lay_Rescuer.mp4");
             } else if (i == 1) {
                 String fileName = "Amputation";
                 String size = "Size: 16.9 MB";

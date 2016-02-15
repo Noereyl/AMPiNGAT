@@ -34,7 +34,8 @@ public class VideoPlayer extends Activity {
         progressDialog = new ProgressDialog(VideoPlayer.this,
                 R.style.AppTheme_Dark_Dialog);
         progressDialog.setMessage("Loading...");
-        progressDialog.setCancelable(false);
+        progressDialog.setCancelable(true);
+        progressDialog.setCanceledOnTouchOutside(false);
         progressDialog.show();
 
         try {
