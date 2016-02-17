@@ -71,24 +71,31 @@
         <activity
             android:name=".SplashScreen"
             android:launchMode="singleTop" >
-             <intent-filter>
-             <action android:name="android.intent.action.MAIN" />
-             <category android:name="android.intent.category.LAUNCHER" />
-             </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".LoginActivity" >
         </activity>
         <activity android:name=".UserProfileActivity" >
         </activity>
-        <activity
-            android:name=".EmergencyReportActivity">
+        <activity android:name=".EmergencyReportActivity" >
         </activity>
         <activity
-            android:name=".ChangePasswordActivity"
-            android:label="@string/title_activity_change_password" >
+            android:name=".ChangePasswordActivity">
         </activity>
 
-        <service android:name=".services.DownloadIntentService"/>
+        <service android:name=".services.DownloadIntentService" />
+
+        <activity
+            android:name=".AboutActivity"
+            android:parentActivityName=".AboutActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ampingat.ampingatapplication.AboutActivity" />
+        </activity>
     </application>
 
 </manifest>

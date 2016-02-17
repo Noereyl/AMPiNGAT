@@ -29,7 +29,7 @@ import butterknife.InjectView;
 public class ChangePasswordActivity extends Activity {
 
     JSONParser jsonParser = new JSONParser();
-    private static String url  = "http://172.20.10.2/ampingat/c_json/changepass";
+    private static String url  = "http://172.20.10.4/ampingat/c_json/changepass";
 
     @InjectView(R.id.txtOldPass) EditText etOldpass;
     @InjectView(R.id.txtNewPass) EditText etNewpass;

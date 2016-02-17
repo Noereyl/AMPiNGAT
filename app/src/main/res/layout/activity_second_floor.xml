@@ -1,27 +1,72 @@
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ff080606">
+    android:background="@color/black">
+
 
     <TextView
-        android:id="@+id/text1"
-        android:layout_height="match_parent"
-        android:layout_width="match_parent"
-        android:text="Where are you now?"
-        android:textSize="40sp"
-        android:layout_gravity="center"
-        android:textAllCaps="true"
-        android:textColor="#fffdfdfe" />
-
-    <ImageView android:id="@+id/customImageView"
+        android:id="@+id/roomId"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="matrix"
-        android:adjustViewBounds="true"
-        android:layout_gravity="center"
-        android:src="@drawable/ic_second_floor"
-        android:layout_marginTop="50dp">
-    </ImageView>
+        android:text="WHERE ARE YOU NOW?"
+        android:textColor="@color/primary_dark"
+        android:textSize="25sp"
+        android:layout_marginLeft="10dp"
+        />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/directions"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textColor="@color/white"
+        android:layout_marginTop="35dp"
+        android:textSize="14sp"
+        android:layout_marginLeft="10dp"
+        />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitCenter"
+        />
+    <TextView
+        android:text="LEGEND:"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:paddingTop="360dp"
+        android:layout_marginLeft="10dp"
+        />
+
+    <TextView
+        android:text="GREEN: Shortest Route"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textColor="@color/green"
+        android:textSize="14sp"
+        android:layout_marginLeft="10dp"
+        android:paddingTop="390dp"
+        />
+    <TextView
+        android:text="ORANGE: Second Route"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textColor="@color/orange"
+        android:textSize="14sp"
+        android:paddingTop="410dp"
+        android:layout_marginLeft="10dp"
+        />
+
+    <TextView
+        android:text="NEON PINK: Third Route"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textColor="@color/pink"
+        android:textSize="14sp"
+        android:paddingTop="430dp"
+        android:layout_marginLeft="10dp"
+        />
+
+</RelativeLayout>

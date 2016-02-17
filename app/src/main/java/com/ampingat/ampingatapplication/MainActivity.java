@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
     ViewPager mViewPager;
     UserSessionManager session;
     JSONParser jsonParser = new JSONParser();
-    private static String url  = "http://172.20.10.2/ampingat/c_json/logout";
+    private static String url  = "http://172.20.10.4/ampingat/c_json/logout";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -182,6 +182,12 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
 
     public void reporting(MenuItem item){
         Intent i = new Intent(MainActivity.this, EmergencyReportActivity.class);
+        startActivity(i);
+        finish();
+    }
+
+    public void about(MenuItem item){
+        Intent i = new Intent(MainActivity.this, AboutActivity.class);
         startActivity(i);
         finish();
     }

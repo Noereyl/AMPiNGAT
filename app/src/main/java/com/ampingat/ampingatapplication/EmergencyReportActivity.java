@@ -34,7 +34,7 @@ public class EmergencyReportActivity extends Activity {
 
     JSONParser jsonParser = new JSONParser();
     //    private static String url  = "http://192.168.56.1/ampingat/c_report";
-    private static String url  = "http://172.20.10.2/ampingat/c_report";
+    private static String url  = "http://172.20.10.4/ampingat/c_report";
     @InjectView(R.id.Location)
     Spinner etLocation;
     @InjectView(R.id.Room)

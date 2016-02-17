@@ -15,5 +15,8 @@
     <color name="iron">#CCCCCC</color>
     <color name="white">#FFFFFF</color>
     <color name="actionbar_background">#00FFFF</color>
+    <color name="green">#ff1fff00</color>
+    <color name="orange">#ffff4a00</color>
+    <color name="pink">#ffff35c8</color>
 
 </resources>

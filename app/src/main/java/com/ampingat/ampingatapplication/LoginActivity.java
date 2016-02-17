@@ -22,7 +22,6 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -33,7 +32,7 @@ public class LoginActivity extends Activity {
 
     JSONParser jsonParser = new JSONParser();
     ProgressDialog progressDialog;
-    private static String url  = "http://172.20.10.2/ampingat/c_json/login";
+    private static String url  = "http://172.20.10.4/ampingat/c_json/login";
     //    private static String url  = "http://192.168.56.1/ampingat/c_json/login";
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_MESSAGE = "message";
@@ -56,8 +55,6 @@ public class LoginActivity extends Activity {
         ButterKnife.inject(this);
 
         session = new UserSessionManager(getApplicationContext());
-        Toast.makeText(getApplicationContext(),
-                "User login status:" + session.isUserLoggedIn(), Toast.LENGTH_LONG).show();
 
         bLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,8 +72,8 @@ public class LoginActivity extends Activity {
                 }
 
                 ArrayList<VideoFile> videoFiles = new ArrayList<VideoFile>();
-                videoFiles.add(new VideoFile("http://172.20.10.2/htdocs/ampingat/uploads/Adult_CPR_-_Lay_Rescuer.mp4"));
-                videoFiles.add(new VideoFile("http://172.20.10.2/htdocs/ampingat/uploads/Amputation.mp4"));
+                videoFiles.add(new VideoFile("http://172.20.10.4/htdocs/ampingat/uploads/Adult_CPR_-_Lay_Rescuer.mp4"));
+                videoFiles.add(new VideoFile("http://172.20.10.4/htdocs/ampingat/uploads/Amputation.mp4"));
 
                 DownloadIntentService downloadIntentService = new DownloadIntentService();
                 DownloadIntentService.setSources(videoFiles);
@@ -127,7 +124,7 @@ public class LoginActivity extends Activity {
         @Override
         protected Boolean doInBackground(String... arg) {
 
-            List<NameValuePair> params = new ArrayList<NameValuePair>();
+            ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
             String userid = etIdnumber.getText().toString();
             String password = etPassword.getText().toString();
             params.add(new BasicNameValuePair("id_no", userid));

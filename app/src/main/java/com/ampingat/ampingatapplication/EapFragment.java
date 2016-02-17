@@ -45,21 +45,25 @@ public class EapFragment extends Fragment {
             data = new VideoMetaData();
             if (i == 0) {
                 String fileName = "Emergency Action Plan in Fire";
-                String size = "Size: 6:51 MB";
-                String length = "Length: 00:03:36";
+                String size = "Size: 2:81 MB";
+                String length = "Length: 00:01:36";
+                Integer image = R.drawable.ic_fire;
                 data.setFileName(fileName);
                 data.setFileSize(size);
                 data.setFileLength(length);
-                data.setFilePath(Environment.getExternalStorageDirectory() + "/Download/AmpingatVid/Adult CPR - Lay Rescuer.mp4");
+                data.setFileImage(image);
+                data.setFilePath(Environment.getExternalStorageDirectory() + "/AMPiNGAT/Fire Eap.mp4");
 
             } else {
                 String fileName = "Emergency Action Plan in Earthquake";
                 data.setFileName(fileName);
-                String size = "Size: 9.86 MB";
-                String length = "Length: 00:05:41";
+                String size = "Size: 5.30 MB";
+                String length = "Length: 00:02:47";
+                Integer image = R.drawable.ic_earthquake;
                 data.setFileLength(length);
                 data.setFileSize(size);
-                data.setFilePath(Environment.getExternalStorageDirectory() + "/Download/AmpingatVid/Shock.mp4");
+                data.setFileImage(image);
+                data.setFilePath(Environment.getExternalStorageDirectory() + "/AMPiNGAT/Earthquake Eap.mp4");
             }
             videoList.add(data);
         }
