@@ -113,8 +113,6 @@ public class ThirdFloorActivity extends Activity implements OnClickableAreaClick
 
             List<NameValuePair> params = new ArrayList<NameValuePair>();
             String roomparams = room.getText().toString();
-            String floor = "4";
-            params.add(new BasicNameValuePair("floor", floor));
             params.add(new BasicNameValuePair("room", roomparams));
             Log.d("request!", "starting");
 
@@ -158,7 +156,7 @@ public class ThirdFloorActivity extends Activity implements OnClickableAreaClick
             } else if(room.getText().equals("Room 312")) {
                 imageView.setImageResource(R.drawable.ic_room312);
             } else if(room.getText().equals("Room 315")) {
-                imageView.setImageResource(R.drawable.ic_room305);
+                imageView.setImageResource(R.drawable.ic_room315);
             } else if(room.getText().equals("Speech Laboratory")) {
                 imageView.setImageResource(R.drawable.ic_speechlab);
             } else if(room.getText().equals("Room 321")) {
@@ -195,6 +193,8 @@ public class ThirdFloorActivity extends Activity implements OnClickableAreaClick
                 imageView.setImageResource(R.drawable.ic_room325);
             } else if(room.getText().equals("Room 323")) {
                 imageView.setImageResource(R.drawable.ic_room323);
+            } else if(room.getText().equals("Room 305")) {
+                imageView.setImageResource(R.drawable.ic_room306);
             }
 
             imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);

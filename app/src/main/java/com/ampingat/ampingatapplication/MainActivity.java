@@ -40,7 +40,8 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
     ViewPager mViewPager;
     UserSessionManager session;
     JSONParser jsonParser = new JSONParser();
-    private static String url  = "http://172.20.10.4/ampingat/c_json/logout";
+//    private static String url  = "http://172.20.10.4/ampingat/c_json/logout";
+    private static String url  = "http://192.168.1.101/ampingat/c_json/login";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

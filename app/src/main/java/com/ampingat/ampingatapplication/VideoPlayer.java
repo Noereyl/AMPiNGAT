@@ -7,7 +7,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.MediaController;
-import android.widget.Toast;
 import android.widget.VideoView;
 
 /**
@@ -41,7 +40,6 @@ public class VideoPlayer extends Activity {
         try {
             videoView.setMediaController(mediaController);
             Uri uri = Uri.parse(getIntent().getExtras().getString("VIDEO_PATH"));
-            Toast.makeText(VideoPlayer.this, "" + getIntent().getExtras().getString("VIDEO_PATH"), Toast.LENGTH_SHORT).show();
             videoView.setVideoURI(uri);
             videoView.start();
 

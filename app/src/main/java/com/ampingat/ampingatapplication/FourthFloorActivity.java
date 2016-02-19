@@ -33,6 +33,7 @@ public class FourthFloorActivity extends Activity implements OnClickableAreaClic
     String area;
     JSONParser jsonParser = new JSONParser();
     private static String url  = "http://172.20.10.4/ampingat/c_fourthfloorroutes/customizedRoutes";
+
     UserSessionManager session;
 
 
@@ -75,6 +76,7 @@ public class FourthFloorActivity extends Activity implements OnClickableAreaClic
         clickableAreas.add(new ClickableArea(219, 32, 92, 81, "BSBA"));
         clickableAreas.add(new ClickableArea(92, 221, 68, 75, "CrimLab"));
         clickableAreas.add(new ClickableArea(263, 28, 134, 140, "Fourth Floor Extension"));
+        clickableAreas.add(new ClickableArea(604, 19, 101, 55, "Canteen"));
         clickableAreasImage.setClickableAreas(clickableAreas);
     }
 
@@ -113,8 +115,6 @@ public class FourthFloorActivity extends Activity implements OnClickableAreaClic
 
             List<NameValuePair> params = new ArrayList<NameValuePair>();
             String roomparams = room.getText().toString();
-            String floor = "4";
-            params.add(new BasicNameValuePair("floor", floor));
             params.add(new BasicNameValuePair("room", roomparams));
             params.add(new BasicNameValuePair("userid", userid));
             Log.d("request!", "starting");
@@ -144,12 +144,10 @@ public class FourthFloorActivity extends Activity implements OnClickableAreaClic
                 Toast.makeText(FourthFloorActivity.this, requestRoutes.message, Toast.LENGTH_SHORT).show();
             }
 //            direction.setText("[1] " + requestRoutes.shortestRoute + " -> [2]" + requestRoutes.secondRoute + " -> [3]" + requestRoutes.thirdRoute);
-            direction.setText("Route: " + requestRoutes.shortestRoute);
+            direction.setText("Route: " + requestRoutes.shortestRoute + requestRoutes.secondRoute);
             customRoutes();
             imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
             imageView.setClickable(true);
-
-
             AfterTask();
         }
 
@@ -194,22 +192,37 @@ public class FourthFloorActivity extends Activity implements OnClickableAreaClic
                 imageView.setImageResource(R.drawable.ic_extension);
             } else if(room.getText().equals("Computer Laboratory 4")) {
                 imageView.setImageResource(R.drawable.ic_comlab);
+            } else if(room.getText().equals("Canteen")) {
+                imageView.setImageResource(R.drawable.ic_canteen4);
             }
         }
 
         public void customRoutes() {
-            String er1 = "Route: [Electrical Room, Fire Exit 1]";
-            String er2 = "Route: [Electrical Room, Fire Exit 2]";
-            String care1 = "Route: [caregiver room, 4th Floor Extension]";
-            String care2 = "Route: [caregiver room, Fire Exit 2]";
-            String care3 = "Route: [caregiver room, Stair 2]";
-            String physics1 = "Route: [physics lab, Fire Exit 1]";
-            String physics2 = "Route: [physics lab, Fire Exit 2]";
+            String er1 = "Route: [Electrical Room, Fire Exit 1][]";
+            String er2 = "Route: [Electrical Room, Fire Exit 2][]";
+            String care1 = "Route: [caregiver room, Fire Exit 2][]";
+            String care2 = "Route: [caregiver room, Fire Exit 2][caregiver room, Stair 2]";
+            String care3 = "Route: [caregiver room, Stair 2][caregiver room, 4th Floor Extension]";
+            String physics1 = "Route: [physics lab, Fire Exit 1][]";
+            String physics2 = "Route: [physics lab, Fire Exit 2][]";
+            String ite1 = "Route: [ite, Fire Exit 3][]";
+            String ite2 = "Route: [ite, 4th Floor Extension][]";
+            String crim1 = "Route: [crimlab, 4th Floor Extension][]";
+            String crim2 = "Route: [crimlab, Fire Exit 3][]";
+            String rum418s = "Route: [room 418, 4th Floor Extension][]";
+            String rum418 = "Route: [room 418, Fire Exit 3][]";
+            String colfac1 = "Route: [College faculty, Stair 1][]";
+            String colfac2 = "Route: [College faculty, Fire Exit 1][]";
+            String masscom1 = "Route: [MassCom, Stair 1][]";
+            String masscom2 = "Route: [MassCom, Fire Exit 1][]";
+            String exten1 = "Route: [extension][]";
 
             if(room.getText().equals("Deans Office")) {
                 imageView.setImageResource(R.drawable.ic_customdean);
-            } else if(room.getText().equals("College Faculty")) {
+            } else if(room.getText().equals("College Faculty") & direction.getText().equals(colfac1)) {
                 imageView.setImageResource(R.drawable.ic_customfaculty);
+            } else if(room.getText().equals("College Faculty") & direction.getText().equals(colfac2)) {
+                imageView.setImageResource(R.drawable.ic_customcollegefac);
             } else if(room.getText().equals("Room 405")) {
                 imageView.setImageResource(R.drawable.ic_customroom405);
             } else if(room.getText().equals("CHS Room")) {
@@ -220,8 +233,10 @@ public class FourthFloorActivity extends Activity implements OnClickableAreaClic
                 imageView.setImageResource(R.drawable.ic_customeroom);
             } else if(room.getText().equals("College Library")) {
                 imageView.setImageResource(R.drawable.ic_customcollegelib);
-            } else if(room.getText().equals("MassCom Room")) {
+            } else if(room.getText().equals("MassCom Room")  & direction.getText().equals(masscom1)) {
                 imageView.setImageResource(R.drawable.ic_custommasscom);
+            } else if(room.getText().equals("MassCom Room")  & direction.getText().equals(masscom2)) {
+                imageView.setImageResource(R.drawable.ic_custommasscom1);
             } else if(room.getText().equals("Accounting Lab")) {
                 imageView.setImageResource(R.drawable.ic_customcustomaccroom);
             } else if(room.getText().equals("Room 406")) {
@@ -229,31 +244,41 @@ public class FourthFloorActivity extends Activity implements OnClickableAreaClic
             } else if(room.getText().equals("Physics Lab") & direction.getText().equals(physics2)) {
                 imageView.setImageResource(R.drawable.ic_customphysic2);
             } else if(room.getText().equals("Physics Lab") & direction.getText().equals(physics1)) {
-                imageView.setImageResource(R.drawable.ic_customphysic1);
+                imageView.setImageResource(R.drawable.ic_customphysics);
             } else if(room.getText().equals("OSAD/SSG Office")) {
                 imageView.setImageResource(R.drawable.ic_customssg);
-            } else if(room.getText().equals("ITE Center")) {
+            } else if(room.getText().equals("ITE Center") & direction.getText().equals(ite2)) {
                 imageView.setImageResource(R.drawable.ic_customite);
+            } else if(room.getText().equals("ITE Center") & direction.getText().equals(ite1)) {
+                imageView.setImageResource(R.drawable.ic_customite2);
             } else if(room.getText().equals("Room 417")) {
                 imageView.setImageResource(R.drawable.ic_customroom417);
-            } else if(room.getText().equals("Room 418")) {
+            } else if(room.getText().equals("Room 418")  & direction.getText().equals(rum418)) {
                 imageView.setImageResource(R.drawable.ic_customroom418);
+            } else if(room.getText().equals("Room 418") & direction.getText().equals(rum418s)) {
+                imageView.setImageResource(R.drawable.ic_customroom418s);
             } else if(room.getText().equals("BSBA")) {
                 imageView.setImageResource(R.drawable.ic_customcustombsba);
             } else if(room.getText().equals("ChemLab")) {
                 imageView.setImageResource(R.drawable.ic_customchemlab1);
             } else if(room.getText().equals("Caregiver Room") & direction.getText().equals(care1)) {
-                imageView.setImageResource(R.drawable.ic_customcaregiver2);
-            } else if(room.getText().equals("Caregiver Room") & direction.getText().equals(care2)) {
                 imageView.setImageResource(R.drawable.ic_customcaregiver);
+            } else if(room.getText().equals("Caregiver Room") & direction.getText().equals(care2)) {
+                imageView.setImageResource(R.drawable.ic_customcaregiver3);
             } else if(room.getText().equals("Caregiver Room") & direction.getText().equals(care3)) {
-                    imageView.setImageResource(R.drawable.ic_customcaregiver3);
-            } else if(room.getText().equals("CrimLab")) {
-                imageView.setImageResource(R.drawable.ic_crim);
-            } else if(room.getText().equals("Fourth Floor Extension")) {
-                imageView.setImageResource(R.drawable.ic_extension);
+                imageView.setImageResource(R.drawable.ic_customcaregiver2);
+            } else if(room.getText().equals("CrimLab") & direction.getText().equals(crim1)) {
+                imageView.setImageResource(R.drawable.ic_customcrim1);
+            } else if(room.getText().equals("CrimLab") & direction.getText().equals(crim2)) {
+                imageView.setImageResource(R.drawable.ic_customcrim);
+            } else if(room.getText().equals("Fourth Floor Extension") & direction.getText().equals(exten1)) {
+                imageView.setImageResource(R.drawable.ic_customextension4);
             } else if(room.getText().equals("Computer Laboratory 4")) {
                 imageView.setImageResource(R.drawable.ic_customcomlab4);
+            } else if(room.getText().equals("Canteen")) {
+                imageView.setImageResource(R.drawable.ic_customcanteen4);
+            } else if(direction.getText().equals("[][]")) {
+                imageView.setImageResource(R.drawable.ic_fourthfloor);
             }
         }
 

@@ -99,8 +99,6 @@ public class FirstFloorActivity extends Activity implements OnClickableAreaClick
 
             List<NameValuePair> params = new ArrayList<NameValuePair>();
             String roomparams = room.getText().toString();
-            String floor = "4";
-            params.add(new BasicNameValuePair("floor", floor));
             params.add(new BasicNameValuePair("room", roomparams));
             Log.d("request!", "starting");
 

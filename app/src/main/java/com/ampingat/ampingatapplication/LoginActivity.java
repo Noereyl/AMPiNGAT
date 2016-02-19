@@ -33,7 +33,8 @@ public class LoginActivity extends Activity {
     JSONParser jsonParser = new JSONParser();
     ProgressDialog progressDialog;
     private static String url  = "http://172.20.10.4/ampingat/c_json/login";
-    //    private static String url  = "http://192.168.56.1/ampingat/c_json/login";
+
+
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_MESSAGE = "message";
 

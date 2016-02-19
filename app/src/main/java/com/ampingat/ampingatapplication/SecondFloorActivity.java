@@ -32,7 +32,6 @@ public class SecondFloorActivity extends Activity implements OnClickableAreaClic
     JSONParser jsonParser = new JSONParser();
     private static String url  = "http://172.20.10.4/ampingat/c_secondfloorroutes/requestroutes";
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -113,8 +112,6 @@ public class SecondFloorActivity extends Activity implements OnClickableAreaClic
 
             List<NameValuePair> params = new ArrayList<NameValuePair>();
             String roomparams = room.getText().toString();
-            String floor = "4";
-            params.add(new BasicNameValuePair("floor", floor));
             params.add(new BasicNameValuePair("room", roomparams));
             Log.d("request!", "starting");
 
