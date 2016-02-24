@@ -2,6 +2,9 @@ package com.ampingat.ampingatapplication;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ampingat.ampingatapplication.helpers.Constants;
 import com.ampingat.ampingatapplication.models.RequestRoutesResponse;
 import com.google.gson.Gson;
 
@@ -30,7 +34,7 @@ public class SecondFloorActivity extends Activity implements OnClickableAreaClic
     TextView room, direction;
     String area;
     JSONParser jsonParser = new JSONParser();
-    private static String url  = "http://172.20.10.4/ampingat/c_secondfloorroutes/requestroutes";
+    private static String url  = "http://" + Constants.DOMAIN_IP + "ampingat/c_secondfloorroutes/requestroutes";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +47,26 @@ public class SecondFloorActivity extends Activity implements OnClickableAreaClic
         imageView.setImageResource(R.drawable.ic_second_floor);
         AfterTask();
 
+    }
+
+    public boolean isNetworkOnline() {
+        boolean status=false;
+        try{
+            ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo netInfo = cm.getNetworkInfo(0);
+            if (netInfo != null && netInfo.getState()==NetworkInfo.State.CONNECTED) {
+                status= true;
+            }else {
+                netInfo = cm.getNetworkInfo(1);
+                if(netInfo!=null && netInfo.getState()== NetworkInfo.State.CONNECTED)
+                    status= true;
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+            return false;
+        }
+        Toast.makeText(SecondFloorActivity.this, "Internet Connection Status:" + status, Toast.LENGTH_SHORT).show();
+        return status;
     }
 
     @SuppressWarnings("unchecked")
@@ -87,7 +111,73 @@ public class SecondFloorActivity extends Activity implements OnClickableAreaClic
         Toast.makeText(SecondFloorActivity.this, "" + o, Toast.LENGTH_SHORT).show();
         area = "" + o;
         room.setText(area);
-        new RequestRoutes().execute();
+
+        if(isNetworkOnline()) {
+            new RequestRoutes().execute();
+        } else {
+           defaultroutes();
+        }
+    }
+
+    public void defaultroutes() {
+
+        Toast.makeText(SecondFloorActivity.this, "Successfully Received the routes...", Toast.LENGTH_SHORT).show();
+        if(room.getText().equals("Grade School Faculty")) {
+            imageView.setImageResource(R.drawable.ic_gradefaculty);
+        } else if(room.getText().equals("Room 202")) {
+            imageView.setImageResource(R.drawable.ic_room202);
+        } else if(room.getText().equals("Room 203")) {
+            imageView.setImageResource(R.drawable.ic_room203);
+        } else if(room.getText().equals("Room 204")) {
+            imageView.setImageResource(R.drawable.ic_room204);
+        } else if(room.getText().equals("Room 205")) {
+            imageView.setImageResource(R.drawable.ic_room205);
+        } else if(room.getText().equals("Room 206")) {
+            imageView.setImageResource(R.drawable.ic_room206);
+        } else if(room.getText().equals("Room 207")) {
+            imageView.setImageResource(R.drawable.ic_room207);
+        } else if(room.getText().equals("Room 208")) {
+            imageView.setImageResource(R.drawable.ic_room208);
+        } else if(room.getText().equals("Room 209")) {
+            imageView.setImageResource(R.drawable.ic_room209);
+        } else if(room.getText().equals("Room 211")) {
+            imageView.setImageResource(R.drawable.ic_room211);
+        } else if(room.getText().equals("Room 212")) {
+            imageView.setImageResource(R.drawable.ic_room212);
+        } else if(room.getText().equals("Room 215")) {
+            imageView.setImageResource(R.drawable.ic_room215);
+        } else if(room.getText().equals("Accreditation Center")) {
+            imageView.setImageResource(R.drawable.ic_accredi);
+        } else if(room.getText().equals("CJF ComLab")) {
+            imageView.setImageResource(R.drawable.ic_comlabcjf);
+        } else if(room.getText().equals("CJF Office")) {
+            imageView.setImageResource(R.drawable.ic_cjfoffice);
+        } else if(room.getText().equals("Audio Visual Room")) {
+            imageView.setImageResource(R.drawable.ic_avr);
+        } else if(room.getText().equals("Computer Laboratory 2")) {
+            imageView.setImageResource(R.drawable.ic_comlab2);
+        } else if(room.getText().equals("Second Floor Extension")) {
+            imageView.setImageResource(R.drawable.ic_extension2);
+        } else if(room.getText().equals("Research Center")) {
+            imageView.setImageResource(R.drawable.ic_research);
+        } else if(room.getText().equals("Room 210")) {
+            imageView.setImageResource(R.drawable.ic_210);
+        } else if(room.getText().equals("Room 216")) {
+            imageView.setImageResource(R.drawable.ic_room216);
+        } else if(room.getText().equals("Room 217")) {
+            imageView.setImageResource(R.drawable.ic_room217);
+        } else if(room.getText().equals("Room 218")) {
+            imageView.setImageResource(R.drawable .ic_room218);
+        } else if(room.getText().equals("Room 219")) {
+            imageView.setImageResource(R.drawable.ic_room219);
+        } else if(room.getText().equals("Room 220")) {
+            imageView.setImageResource(R.drawable.ic_room220);
+        } else if(room.getText().equals("Social Work Office")) {
+            imageView.setImageResource(R.drawable.ic_socialwork);
+        }
+        imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+        imageView.setClickable(true);
+        AfterTask();
     }
 
     class RequestRoutes extends AsyncTask<String, String, Boolean> {
@@ -139,7 +229,7 @@ public class SecondFloorActivity extends Activity implements OnClickableAreaClic
             if(success == true) {
                 Toast.makeText(SecondFloorActivity.this, requestRoutes.message, Toast.LENGTH_SHORT).show();
             }
-            direction.setText(requestRoutes.shortestRoute.toString() + "," + requestRoutes.secondRoute + "," + requestRoutes.thirdRoute);
+            direction.setText(requestRoutes.shortestRoute.toString() + " -> " + requestRoutes.secondRoute + " -> " + requestRoutes.thirdRoute);
             if(room.getText().equals("Grade School Faculty")) {
                 imageView.setImageResource(R.drawable.ic_gradefaculty);
             } else if(room.getText().equals("Room 202")) {

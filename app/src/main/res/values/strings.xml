@@ -15,7 +15,7 @@
     <string name="action_report">Report Emergency</string>
 
     <string-array name="tabPages">
-        <item name="Emergency">EVACUATION ROUTES</item>
+        <item name="Emergency">ROUTES</item>
         <item name="EAP">EAP</item>
         <item name="First Aid">FIRST AID</item>
     </string-array>
@@ -127,6 +127,23 @@
         <item name="Accreditation Office">ACCREDITATION OFFICE</item>
         <item name="Room 225">ROOM 225</item>
         <item name="Social Work Lab">SOCIAL WORK LAB</item>
+    </string-array>
+
+    <string-array name="FirstFloorRooms">
+        <item name="Engineering Office">ENGINEERING OFFICE</item>
+        <item name="IT Office">IT OFFICE</item>
+        <item name="Architect Office">ARCHITECT OFFICE</item>
+        <item name="COMPACQ">COMPACQ</item>
+        <item name="Clinic">CLINIC</item>
+        <item name="Coop">COOP</item>
+        <item name="STO">STO</item>
+        <item name="Registrar">REGISTRAR</item>
+        <item name="Printing">PRINTING</item>
+        <item name="Admin Office">ADMIN OFFICE</item>
+        <item name="Prep Library">PREP LIBRARY</item>
+        <item name="Nursery Classroom">NURSERY CLASSROOM</item>
+        <item name="Kinder 1 Classroom">KINDER 1 CLASSROOM</item>
+        <item name="Kinder 2 Classroom">KINDER 2 CLASSROOM</item>
     </string-array>
 
     <string name="title_activity_about">About</string>

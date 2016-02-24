@@ -53,7 +53,7 @@ public class FirstAidFragment extends Fragment  {
                 data.setFileSize(size);
                 data.setFileLength(length);
                 data.setFileImage(image);
-                data.setFilePath(Environment.getExternalStorageDirectory() + "/AMPiNGAT/Adult CPR - Lay Rescuer.mp4");
+                data.setFilePath(Environment.getExternalStorageDirectory() + "/AMPiNGAT/Adult_CPR_-_Lay_Rescuer.mp4");
             } else if (i == 1) {
                 String fileName = "Amputation";
                 String size = "Size: 16.9 MB";
@@ -73,7 +73,7 @@ public class FirstAidFragment extends Fragment  {
                 data.setFileLength(length);
                 data.setFileSize(size);
                 data.setFileImage(image);
-                data.setFilePath(Environment.getExternalStorageDirectory() +"/AMPiNGAT/Bleeding Control Capillary Bleeding.mp4");
+                data.setFilePath(Environment.getExternalStorageDirectory() +"/AMPiNGAT/Bleeding_Control_Capillary_Bleeding.mp4");
             } else if (i == 3) {
                 String fileName = "Bleeding Control (Venous Bleeding)";
                 data.setFileName(fileName);
@@ -83,7 +83,7 @@ public class FirstAidFragment extends Fragment  {
                 data.setFileLength(length);
                 data.setFileSize(size);
                 data.setFileImage(image);
-                data.setFilePath(Environment.getExternalStorageDirectory() +"/AMPiNGAT/Bleeding Control Venous Bleeding.mp4");
+                data.setFilePath(Environment.getExternalStorageDirectory() +"/AMPiNGAT/Bleeding_Control_Venous_Bleeding.mp4");
             } else if (i == 4) {
                 String fileName = "Burns";
                 data.setFileName(fileName);
@@ -103,7 +103,7 @@ public class FirstAidFragment extends Fragment  {
                 data.setFileLength(length);
                 data.setFileSize(size);
                 data.setFileImage(image);
-                data.setFilePath(Environment.getExternalStorageDirectory() +"/AMPiNGAT/Conscious Adult Choking.mp4");
+                data.setFilePath(Environment.getExternalStorageDirectory() +"/AMPiNGAT/Conscious_Adult_Choking.mp4");
             } else if (i == 6) {
                 String fileName = "CPR";
                 data.setFileName(fileName);
@@ -123,7 +123,7 @@ public class FirstAidFragment extends Fragment  {
                 data.setFileLength(length);
                 data.setFileSize(size);
                 data.setFileImage(image);
-                data.setFilePath(Environment.getExternalStorageDirectory() +"/AMPiNGAT/Eye Injuries.mp4");
+                data.setFilePath(Environment.getExternalStorageDirectory() +"/AMPiNGAT/Eye_Injuries.mp4");
             } else if (i == 8) {
                 String fileName = "Fainting";
                 data.setFileName(fileName);
@@ -143,7 +143,7 @@ public class FirstAidFragment extends Fragment  {
                 data.setFileLength(length);
                 data.setFileSize(size);
                 data.setFileImage(image);
-                data.setFilePath(Environment.getExternalStorageDirectory() +"/AMPiNGAT/Hand Washing.mp4");
+                data.setFilePath(Environment.getExternalStorageDirectory() +"/AMPiNGAT/Hand_Washing.mp4");
             } else if (i == 10) {
                 String fileName = "Head, Neck and Back Injuries";
                 String size = "Size: 5.60 MB";
@@ -153,7 +153,7 @@ public class FirstAidFragment extends Fragment  {
                 data.setFileLength(length);
                 data.setFileSize(size);
                 data.setFileImage(image);
-                data.setFilePath(Environment.getExternalStorageDirectory() +"/AMPiNGAT/Head, Neck and Back Injuries.mp4");
+                data.setFilePath(Environment.getExternalStorageDirectory() +"/AMPiNGAT/Head,_Neck_and_Back_Injuries.mp4");
             } else if (i == 11) {
                 String fileName = "Heat Related Emergencies";
                 data.setFileName(fileName);
@@ -163,7 +163,7 @@ public class FirstAidFragment extends Fragment  {
                 data.setFileLength(length);
                 data.setFileSize(size);
                 data.setFileImage(image);
-                data.setFilePath(Environment.getExternalStorageDirectory() +"/AMPiNGAT/Heat Related Emergencies.mp4");
+                data.setFilePath(Environment.getExternalStorageDirectory() +"/AMPiNGAT/Heat_Related_Emergencies.mp4");
             } else if (i == 12) {
                 String fileName = "How to use an Epipen";
                 data.setFileName(fileName);
@@ -173,7 +173,7 @@ public class FirstAidFragment extends Fragment  {
                 data.setFileLength(length);
                 data.setFileSize(size);
                 data.setFileImage(image);
-                data.setFilePath(Environment.getExternalStorageDirectory() +"/AMPiNGAT/How To Use An Epipen.mp4");
+                data.setFilePath(Environment.getExternalStorageDirectory() +"/AMPiNGAT/How_To_Use_An_Epipen.mp4");
             } else if (i == 13) {
                 String fileName = "Musculoskeletal Injuries";
                 data.setFileName(fileName);
@@ -183,7 +183,7 @@ public class FirstAidFragment extends Fragment  {
                 data.setFileLength(length);
                 data.setFileSize(size);
                 data.setFileImage(image);
-                data.setFilePath(Environment.getExternalStorageDirectory() +"/AMPiNGAT/Musculoskeletal Injuries.mp4");
+                data.setFilePath(Environment.getExternalStorageDirectory() +"/AMPiNGAT/Musculoskeletal_Injuries.mp4");
             } else if (i == 14) {
                 String fileName = "Poison Control";
                 data.setFileName(fileName);
@@ -193,7 +193,7 @@ public class FirstAidFragment extends Fragment  {
                 data.setFileLength(length);
                 data.setFileSize(size);
                 data.setFileImage(image);
-                data.setFilePath(Environment.getExternalStorageDirectory() +"/AMPiNGAT/Poison Control.mp4");
+                data.setFilePath(Environment.getExternalStorageDirectory() +"/AMPiNGAT/Poison_Control.mp4");
             } else if (i == 15) {
                 String fileName = "Secondary Survey";
                 data.setFileName(fileName);
@@ -203,7 +203,7 @@ public class FirstAidFragment extends Fragment  {
                 data.setFileLength(length);
                 data.setFileSize(size);
                 data.setFileImage(image);
-                data.setFilePath(Environment.getExternalStorageDirectory() + "/AMPiNGAT/Secondary Survey.mp4");
+                data.setFilePath(Environment.getExternalStorageDirectory() + "/AMPiNGAT/Secondary_Survey.mp4");
             } else if (i == 16) {
                 String fileName = "Seizure";
                 data.setFileName(fileName);

@@ -16,19 +16,15 @@
         android:background="@color/white">
 
 
-        <ImageView
-            android:layout_width="126dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            android:layout_gravity="center_horizontal"
-            android:src="@drawable/ic_ampingat"/>
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
+            android:layout_gravity="center_horizontal"
+            android:textSize="30sp"
             android:textColor="@color/primary_darker"
             android:text="REPORT EMERGENCY"
             android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
             android:textStyle="bold"/>
 
         <TextView
@@ -93,17 +89,7 @@
             android:padding="12dp"
             android:text="SEND REPORT"
             android:textColor="@color/white"
-            android:background="#ff1caaa9"
-            android:textSize="@dimen/abc_action_bar_content_inset_material"
-            android:clickable="true" />
-        <android.support.v7.widget.AppCompatButton
-            android:id="@+id/bCancel"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:padding="12dp"
-            android:text="CANCEL"
-            android:textColor="@color/white"
-            android:background="@color/primary_darker"
+            android:background="#fffe000f"
             android:textSize="@dimen/abc_action_bar_content_inset_material"
             android:clickable="true" />
     </LinearLayout>

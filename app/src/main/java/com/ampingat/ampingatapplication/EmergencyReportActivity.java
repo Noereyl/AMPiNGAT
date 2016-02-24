@@ -2,6 +2,7 @@ package com.ampingat.ampingatapplication;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.ampingat.ampingatapplication.helpers.Constants;
 import com.ampingat.ampingatapplication.models.SendReportResponse;
 import com.google.gson.Gson;
 
@@ -33,8 +35,7 @@ import butterknife.InjectView;
 public class EmergencyReportActivity extends Activity {
 
     JSONParser jsonParser = new JSONParser();
-    //    private static String url  = "http://192.168.56.1/ampingat/c_report";
-    private static String url  = "http://172.20.10.4/ampingat/c_report";
+    private static String url  = "http://" + Constants.DOMAIN_IP + "ampingat/c_report";
     @InjectView(R.id.Location)
     Spinner etLocation;
     @InjectView(R.id.Room)
@@ -43,11 +44,10 @@ public class EmergencyReportActivity extends Activity {
     EditText etRemarks;
     @InjectView(R.id.bSend)
     Button bSend;
-    @InjectView(R.id.bCancel)
-    Button bCancel;
     @InjectView(R.id.etype)
     Spinner etype;
     UserSessionManager session;
+    Context context = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +77,7 @@ public class EmergencyReportActivity extends Activity {
                 String[] fourthfloor = getResources().getStringArray(R.array.FourthFloorRooms);
                 String[] thirdfloor = getResources().getStringArray(R.array.ThirdFloorRooms);
                 String[] secondfloor = getResources().getStringArray(R.array.SecondFloorRooms);
+                String[] firstfloor = getResources().getStringArray(R.array.FirstFloorRooms);
 
                 if(floorval.contentEquals("FOURTH FLOOR")) {
                     etRoom.setAdapter(new ArrayAdapter<String>(EmergencyReportActivity.this, android.R.layout.simple_list_item_1, fourthfloor));
@@ -84,8 +85,9 @@ public class EmergencyReportActivity extends Activity {
                     etRoom.setAdapter(new ArrayAdapter<String>(EmergencyReportActivity.this, android.R.layout.simple_list_item_1, thirdfloor));
                 } else if (floorval.contentEquals("SECOND FLOOR")) {
                     etRoom.setAdapter(new ArrayAdapter<String>(EmergencyReportActivity.this, android.R.layout.simple_list_item_1, secondfloor));
+                }  else if (floorval.contentEquals("FIRST FLOOR")) {
+                    etRoom.setAdapter(new ArrayAdapter<String>(EmergencyReportActivity.this, android.R.layout.simple_list_item_1, firstfloor));
                 }
-
             }
 
             @Override
@@ -96,21 +98,20 @@ public class EmergencyReportActivity extends Activity {
 
         session = new UserSessionManager(getApplicationContext());
 
-        bCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(EmergencyReportActivity.this, MainActivity.class);
-                startActivity(i);
-                finish();
-            }
-        });
-
         bSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 new AttemptSend().execute();
             }
         });
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(EmergencyReportActivity.this, MainActivity.class);
+        startActivity(i);
+        finish();
     }
 
     class AttemptSend extends AsyncTask<String, String, Boolean> {

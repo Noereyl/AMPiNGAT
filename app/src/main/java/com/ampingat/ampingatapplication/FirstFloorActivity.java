@@ -2,6 +2,9 @@ package com.ampingat.ampingatapplication;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ampingat.ampingatapplication.helpers.Constants;
 import com.ampingat.ampingatapplication.models.RequestRoutesResponse;
 import com.google.gson.Gson;
 
@@ -30,7 +34,7 @@ public class FirstFloorActivity extends Activity implements OnClickableAreaClick
     TextView room, direction;
     String area;
     JSONParser jsonParser = new JSONParser();
-    private static String url  = "http://172.20.10.4/ampingat/c_firstfloorroutes/requestroutes";
+    private static String url  = "http://" + Constants.DOMAIN_IP + "ampingat/c_firstfloorroutes/requestroutes";
 
 
     @Override
@@ -45,6 +49,27 @@ public class FirstFloorActivity extends Activity implements OnClickableAreaClick
         AfterTask();
 
     }
+
+    public boolean isNetworkOnline() {
+        boolean status=false;
+        try{
+            ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo netInfo = cm.getNetworkInfo(0);
+            if (netInfo != null && netInfo.getState()==NetworkInfo.State.CONNECTED) {
+                status= true;
+            }else {
+                netInfo = cm.getNetworkInfo(1);
+                if(netInfo!=null && netInfo.getState()== NetworkInfo.State.CONNECTED)
+                    status= true;
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+            return false;
+        }
+        Toast.makeText(FirstFloorActivity.this, "Internet Connection Status:" + status, Toast.LENGTH_SHORT).show();
+        return status;
+    }
+
 
     @SuppressWarnings("unchecked")
     public void AfterTask() {
@@ -74,7 +99,62 @@ public class FirstFloorActivity extends Activity implements OnClickableAreaClick
         Toast.makeText(FirstFloorActivity.this, "" + o, Toast.LENGTH_SHORT).show();
         area = "" + o;
         room.setText(area);
-        new RequestRoutes().execute();
+
+        if(isNetworkOnline()) {
+            new RequestRoutes().execute();
+        } else {
+            defaultRoutes();
+        }
+    }
+
+    public void defaultRoutes() {
+        Toast.makeText(FirstFloorActivity.this, "Successfully Received the routes...", Toast.LENGTH_SHORT).show();
+
+        if(room.getText().equals("Engineering Office")) {
+            imageView.setImageResource(R.drawable.ic_engineering);
+
+        } else if(room.getText().equals("IT Office")) {
+            imageView.setImageResource(R.drawable.ic_it);
+
+        } else if(room.getText().equals("Architect Office")) {
+            imageView.setImageResource(R.drawable.ic_architect);
+
+        } else if(room.getText().equals("COMPACQ")) {
+            imageView.setImageResource(R.drawable.ic_compacq);
+
+        } else if(room.getText().equals("Clinic")) {
+            imageView.setImageResource(R.drawable.ic_clinic);
+
+        } else if(room.getText().equals("Coop")) {
+            imageView.setImageResource(R.drawable.ic_coop);
+
+        } else if(room.getText().equals("STO")) {
+            imageView.setImageResource(R.drawable.ic_sto);
+
+        } else if(room.getText().equals("Admin")) {
+            imageView.setImageResource(R.drawable.ic_admin);
+
+        } else if(room.getText().equals("Prep Library")) {
+            imageView.setImageResource(R.drawable.ic_preplib);
+
+        } else if(room.getText().equals("Printing")) {
+            imageView.setImageResource(R.drawable.ic_printing);
+
+        } else if(room.getText().equals("Registrar")) {
+            imageView.setImageResource(R.drawable.ic_register);
+
+        } else if(room.getText().equals("Nursery Classroom")) {
+            imageView.setImageResource(R.drawable.ic_nursery);
+
+        } else if(room.getText().equals("Kinder 1 Classroom")) {
+            imageView.setImageResource(R.drawable.ic_kinder1);
+
+        } else if(room.getText().equals("Kinder 2 Classroom")) {
+            imageView.setImageResource(R.drawable.ic_kinder22);
+        }
+        imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+        imageView.setClickable(true);
+        AfterTask();
     }
 
     class RequestRoutes extends AsyncTask<String, String, Boolean> {
@@ -126,105 +206,53 @@ public class FirstFloorActivity extends Activity implements OnClickableAreaClick
             if(success == true) {
                 Toast.makeText(FirstFloorActivity.this, requestRoutes.message, Toast.LENGTH_SHORT).show();
             }
-            direction.setText(requestRoutes.shortestRoute.toString() + "," + requestRoutes.secondRoute + "," + requestRoutes.thirdRoute);
-            defaultRoutes();
+            direction.setText(requestRoutes.shortestRoute.toString() + " -> " + requestRoutes.secondRoute + " -> " + requestRoutes.thirdRoute);
+            if(room.getText().equals("Engineering Office")) {
+                imageView.setImageResource(R.drawable.ic_engineering);
+
+            } else if(room.getText().equals("IT Office")) {
+                imageView.setImageResource(R.drawable.ic_it);
+
+            } else if(room.getText().equals("Architect Office")) {
+                imageView.setImageResource(R.drawable.ic_architect);
+
+            } else if(room.getText().equals("COMPACQ")) {
+                imageView.setImageResource(R.drawable.ic_compacq);
+
+            } else if(room.getText().equals("Clinic")) {
+                imageView.setImageResource(R.drawable.ic_clinic);
+
+            } else if(room.getText().equals("Coop")) {
+                imageView.setImageResource(R.drawable.ic_coop);
+
+            } else if(room.getText().equals("STO")) {
+                imageView.setImageResource(R.drawable.ic_sto);
+
+            } else if(room.getText().equals("Admin")) {
+                imageView.setImageResource(R.drawable.ic_admin);
+
+            } else if(room.getText().equals("Prep Library")) {
+                imageView.setImageResource(R.drawable.ic_preplib);
+
+            } else if(room.getText().equals("Printing")) {
+                imageView.setImageResource(R.drawable.ic_printing);
+
+            } else if(room.getText().equals("Registrar")) {
+                imageView.setImageResource(R.drawable.ic_register);
+
+            } else if(room.getText().equals("Nursery Classroom")) {
+                imageView.setImageResource(R.drawable.ic_nursery);
+
+            } else if(room.getText().equals("Kinder 1 Classroom")) {
+                imageView.setImageResource(R.drawable.ic_kinder1);
+
+            } else if(room.getText().equals("Kinder 2 Classroom")) {
+                imageView.setImageResource(R.drawable.ic_kinder22);
+            }
             imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
             imageView.setClickable(true);
             AfterTask();
-
-        }
-    }
-
-
-
-    public void defaultRoutes() {
-        if(room.getText().equals("Engineering Office")) {
-            imageView.setImageResource(R.drawable.ic_engineering);
-
-        } else if(room.getText().equals("IT Office")) {
-            imageView.setImageResource(R.drawable.ic_it);
-
-        } else if(room.getText().equals("Architect Office")) {
-            imageView.setImageResource(R.drawable.ic_architect);
-
-        } else if(room.getText().equals("COMPACQ")) {
-            imageView.setImageResource(R.drawable.ic_compacq);
-
-        } else if(room.getText().equals("Clinic")) {
-            imageView.setImageResource(R.drawable.ic_clinic);
-
-        } else if(room.getText().equals("Coop")) {
-            imageView.setImageResource(R.drawable.ic_coop);
-
-        } else if(room.getText().equals("STO")) {
-            imageView.setImageResource(R.drawable.ic_sto);
-
-        } else if(room.getText().equals("Admin")) {
-            imageView.setImageResource(R.drawable.ic_admin);
-
-        } else if(room.getText().equals("Prep Library")) {
-            imageView.setImageResource(R.drawable.ic_preplib);
-
-        } else if(room.getText().equals("Printing")) {
-            imageView.setImageResource(R.drawable.ic_printing);
-
-        } else if(room.getText().equals("Registrar")) {
-            imageView.setImageResource(R.drawable.ic_register);
-
-        } else if(room.getText().equals("Nursery Classroom")) {
-            imageView.setImageResource(R.drawable.ic_nursery);
-
-        } else if(room.getText().equals("Kinder 1 Classroom")) {
-            imageView.setImageResource(R.drawable.ic_kinder1);
-
-        } else if(room.getText().equals("Kinder 2 Classroom")) {
-            imageView.setImageResource(R.drawable.ic_kinder2);
-        }
-    }
-
-
-    public void customRoutes() {
-        if(room.getText().equals("Engineering Office")) {
-            imageView.setImageResource(R.drawable.ic_engineering);
-
-        } else if(room.getText().equals("IT Office")) {
-            imageView.setImageResource(R.drawable.ic_it);
-
-        } else if(room.getText().equals("Architect Office")) {
-            imageView.setImageResource(R.drawable.ic_architect);
-
-        } else if(room.getText().equals("COMPACQ")) {
-            imageView.setImageResource(R.drawable.ic_compacq);
-
-        } else if(room.getText().equals("Clinic")) {
-            imageView.setImageResource(R.drawable.ic_clinic);
-
-        } else if(room.getText().equals("Coop")) {
-            imageView.setImageResource(R.drawable.ic_coop);
-
-        } else if(room.getText().equals("STO")) {
-            imageView.setImageResource(R.drawable.ic_sto);
-
-        } else if(room.getText().equals("Admin")) {
-            imageView.setImageResource(R.drawable.ic_admin);
-
-        } else if(room.getText().equals("Prep Library")) {
-            imageView.setImageResource(R.drawable.ic_preplib);
-
-        } else if(room.getText().equals("Printing")) {
-            imageView.setImageResource(R.drawable.ic_printing);
-
-        } else if(room.getText().equals("Registrar")) {
-            imageView.setImageResource(R.drawable.ic_register);
-
-        } else if(room.getText().equals("Nursery Classroom")) {
-            imageView.setImageResource(R.drawable.ic_nursery);
-
-        } else if(room.getText().equals("Kinder 1 Classroom")) {
-            imageView.setImageResource(R.drawable.ic_kinder1);
-
-        } else if(room.getText().equals("Kinder 2 Classroom")) {
-            imageView.setImageResource(R.drawable.ic_kinder2);
         }
     }
 }
+

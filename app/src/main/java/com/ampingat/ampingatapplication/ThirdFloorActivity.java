@@ -2,6 +2,9 @@ package com.ampingat.ampingatapplication;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ampingat.ampingatapplication.helpers.Constants;
 import com.ampingat.ampingatapplication.models.RequestRoutesResponse;
 import com.google.gson.Gson;
 
@@ -32,20 +36,39 @@ public class ThirdFloorActivity extends Activity implements OnClickableAreaClick
     TextView room, direction;
     String area;
     JSONParser jsonParser = new JSONParser();
-    private static String url  = "http://172.20.10.4/ampingat/c_thirdfloorroutes/requestroutes";
+    private static String url  = "http://" + Constants.DOMAIN_IP + "ampingat/c_thirdfloorroutes/requestroutes";
+    ProgressDialog progressDialog;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_third_floor);
-
         room = (TextView) findViewById(R.id.roomId);
         direction = (TextView) findViewById(R.id.directions);
         imageView = (ImageView) findViewById(R.id.imageView);
         imageView.setImageResource(R.drawable.ic_third_floor);
         AfterTask();
+    }
 
+    public boolean isNetworkOnline() {
+        boolean status=false;
+        try{
+            ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo netInfo = cm.getNetworkInfo(0);
+            if (netInfo != null && netInfo.getState()==NetworkInfo.State.CONNECTED) {
+                status= true;
+            }else {
+                netInfo = cm.getNetworkInfo(1);
+                if(netInfo!=null && netInfo.getState()== NetworkInfo.State.CONNECTED)
+                    status= true;
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+            return false;
+        }
+        Toast.makeText(ThirdFloorActivity.this, "Internet Connection Status:" + status, Toast.LENGTH_SHORT).show();
+        return status;
     }
 
     @SuppressWarnings("unchecked")
@@ -88,14 +111,80 @@ public class ThirdFloorActivity extends Activity implements OnClickableAreaClick
         Toast.makeText(ThirdFloorActivity.this, "" + o, Toast.LENGTH_SHORT).show();
         area = "" + o;
         room.setText(area);
-        new RequestRoutes().execute();
+        if(isNetworkOnline()) {
+            new RequestRoutes().execute();
+        } else {
+            defaultRoutes();
+        }
     }
 
-    class RequestRoutes extends AsyncTask<String, String, Boolean> {
+    public void defaultRoutes () {
+
+        Toast.makeText(ThirdFloorActivity.this, "Successfully Received the routes...", Toast.LENGTH_SHORT).show();
+        if(room.getText().equals("HRMD Office")) {
+            imageView.setImageResource(R.drawable.ic_hrmd);
+        } else if(room.getText().equals("POD Office")) {
+            imageView.setImageResource(R.drawable.ic_pod);
+        } else if(room.getText().equals("Room 305")) {
+            imageView.setImageResource(R.drawable.ic_room305);
+        } else if(room.getText().equals("Room 307")) {
+            imageView.setImageResource(R.drawable.ic_room307);
+        } else if(room.getText().equals("Room 308")) {
+            imageView.setImageResource(R.drawable.ic_room308);
+        } else if(room.getText().equals("Room 309")) {
+            imageView.setImageResource(R.drawable.ic_room309);
+        } else if(room.getText().equals("Room 312")) {
+            imageView.setImageResource(R.drawable.ic_room312);
+        } else if(room.getText().equals("Room 315")) {
+            imageView.setImageResource(R.drawable.ic_room315);
+        } else if(room.getText().equals("Speech Laboratory")) {
+            imageView.setImageResource(R.drawable.ic_speechlab);
+        } else if(room.getText().equals("Room 321")) {
+            imageView.setImageResource(R.drawable.ic_room321);
+        } else if(room.getText().equals("Room 322")) {
+            imageView.setImageResource(R.drawable.ic_room322);
+        } else if(room.getText().equals("Room 324")) {
+            imageView.setImageResource(R.drawable.ic_room324);
+        } else if(room.getText().equals("Room 302")) {
+            imageView.setImageResource(R.drawable.ic_room302);
+        } else if(room.getText().equals("Room 304")) {
+            imageView.setImageResource(R.drawable.ic_room304);
+        } else if(room.getText().equals("Computer Laboratory 3")) {
+            imageView.setImageResource(R.drawable.ic_comlab3);
+        } else if(room.getText().equals("High School Library")) {
+            imageView.setImageResource(R.drawable.ic_library3);
+        } else if(room.getText().equals("Room 315")) {
+            imageView.setImageResource(R.drawable.ic_room315);
+        } else if(room.getText().equals("Third Floor Extension")) {
+            imageView.setImageResource(R.drawable.ic_extension3);
+        } else if(room.getText().equals("Room 310")) {
+            imageView.setImageResource(R.drawable.ic_310);
+        } else if(room.getText().equals("High School Faculty")) {
+            imageView.setImageResource(R.drawable.ic_highfac);
+        } else if(room.getText().equals("Room 317")) {
+            imageView.setImageResource(R.drawable.ic_mrc);
+        } else if(room.getText().equals("Room 318")) {
+            imageView.setImageResource(R.drawable .ic_room318);
+        } else if(room.getText().equals("Room 319")) {
+            imageView.setImageResource(R.drawable.ic_room319);
+        } else if(room.getText().equals("Room 320")) {
+            imageView.setImageResource(R.drawable.ic_room320);
+        } else if(room.getText().equals("Room 325")) {
+            imageView.setImageResource(R.drawable.ic_room325);
+        } else if(room.getText().equals("Room 323")) {
+            imageView.setImageResource(R.drawable.ic_room323);
+        } else if(room.getText().equals("Room 305")) {
+            imageView.setImageResource(R.drawable.ic_room306);
+        }
+        imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+        imageView.setClickable(true);
+        AfterTask();
+    }
+
+
+        class RequestRoutes extends AsyncTask<String, String, Boolean> {
 
         RequestRoutesResponse requestRoutes = null;
-        ProgressDialog progressDialog;
-
 
         protected void onPreExecute() {
             super.onPreExecute();
@@ -124,7 +213,6 @@ public class ThirdFloorActivity extends Activity implements OnClickableAreaClick
                 if (requestRoutes.success == 1) {
                     Log.d("Successful!", json.toString());
                     return (requestRoutes.success == 1);
-
                 } else {
                     return false;
                 }
@@ -132,6 +220,7 @@ public class ThirdFloorActivity extends Activity implements OnClickableAreaClick
                 e.printStackTrace();
             }
             return false;
+
         }
 
         protected void onPostExecute(Boolean success) {
@@ -140,7 +229,7 @@ public class ThirdFloorActivity extends Activity implements OnClickableAreaClick
             if(success == true) {
                 Toast.makeText(ThirdFloorActivity.this, requestRoutes.message, Toast.LENGTH_SHORT).show();
             }
-            direction.setText(requestRoutes.shortestRoute.toString() + "," + requestRoutes.secondRoute + "," + requestRoutes.thirdRoute);
+            direction.setText(requestRoutes.shortestRoute.toString() + " -> " + requestRoutes.secondRoute + " -> " + requestRoutes.thirdRoute);
             if(room.getText().equals("HRMD Office")) {
                 imageView.setImageResource(R.drawable.ic_hrmd);
             } else if(room.getText().equals("POD Office")) {
@@ -196,11 +285,9 @@ public class ThirdFloorActivity extends Activity implements OnClickableAreaClick
             } else if(room.getText().equals("Room 305")) {
                 imageView.setImageResource(R.drawable.ic_room306);
             }
-
             imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
             imageView.setClickable(true);
             AfterTask();
-
         }
     }
 }

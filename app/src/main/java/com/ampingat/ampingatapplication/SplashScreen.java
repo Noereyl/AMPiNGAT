@@ -19,8 +19,6 @@ public class SplashScreen extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
-
-        textView = (TextView) findViewById(R.id.status);
         progressBar = (ProgressBar) findViewById((R.id.progressBar));
         new Thread(new Runnable() {
             public void run() {
@@ -29,7 +27,6 @@ public class SplashScreen extends Activity {
                     handler.post(new Runnable() {
                         public void run() {
                             progressBar.setProgress(progressStatus);
-                            textView.setText(progressStatus + "%");
                         }
                     });
                     try {

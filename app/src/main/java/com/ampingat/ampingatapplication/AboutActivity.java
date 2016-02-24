@@ -1,8 +1,8 @@
 package com.ampingat.ampingatapplication;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 
 
 public class AboutActivity extends Activity {
@@ -13,5 +13,10 @@ public class AboutActivity extends Activity {
         setContentView(R.layout.activity_about);
     }
 
-
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(AboutActivity.this, MainActivity.class);
+        startActivity(i);
+        finish();
+    }
 }

@@ -83,19 +83,19 @@
         </activity>
         <activity android:name=".EmergencyReportActivity" >
         </activity>
-        <activity
-            android:name=".ChangePasswordActivity">
+        <activity android:name=".ChangePasswordActivity" >
         </activity>
 
         <service android:name=".services.DownloadIntentService" />
 
         <activity
             android:name=".AboutActivity"
-            android:parentActivityName=".AboutActivity">
+            android:parentActivityName=".AboutActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.ampingat.ampingatapplication.AboutActivity" />
         </activity>
+
     </application>
 
 </manifest>

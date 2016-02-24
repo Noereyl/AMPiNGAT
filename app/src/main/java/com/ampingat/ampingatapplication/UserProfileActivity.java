@@ -26,7 +26,6 @@ public class UserProfileActivity extends Activity {
         TextView lbId = (TextView) findViewById(R.id.lblId);
         TextView lbType = (TextView) findViewById(R.id.lblType);
         btnChangePass = (Button) findViewById(R.id.btnChangePass);
-        btnHome = (Button) findViewById(R.id.btnHome);
 
         HashMap<String, String> user = session.getUserDetails();
 
@@ -39,15 +38,6 @@ public class UserProfileActivity extends Activity {
         lbType.setText(Html.fromHtml(" <b>" + type + "</b>"));
 
 
-        btnHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(UserProfileActivity.this, MainActivity.class);
-                startActivity(i);
-                finish();
-            }
-        });
-
         btnChangePass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,5 +46,13 @@ public class UserProfileActivity extends Activity {
                 finish();
             }
         });
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(UserProfileActivity.this, MainActivity.class);
+        startActivity(i);
+        finish();
     }
 }

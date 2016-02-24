@@ -3,7 +3,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:fitsSystemWindows="true"
-    android:background="@color/black">
+    android:background="@drawable/ic_ampbg">
 
     <LinearLayout
         android:orientation="vertical"
@@ -12,8 +12,7 @@
         android:paddingTop="10dp"
         android:paddingLeft="24dp"
         android:paddingRight="24dp"
-        android:paddingBottom="30dp"
-        android:background="@color/black">
+        android:paddingBottom="30dp">
 
 
         <ImageView

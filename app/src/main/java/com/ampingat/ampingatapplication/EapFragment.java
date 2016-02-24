@@ -52,7 +52,7 @@ public class EapFragment extends Fragment {
                 data.setFileSize(size);
                 data.setFileLength(length);
                 data.setFileImage(image);
-                data.setFilePath(Environment.getExternalStorageDirectory() + "/AMPiNGAT/Fire Eap.mp4");
+                data.setFilePath(Environment.getExternalStorageDirectory() + "/AMPiNGAT/Fire_Eap.mp4");
 
             } else {
                 String fileName = "Emergency Action Plan in Earthquake";
@@ -63,7 +63,7 @@ public class EapFragment extends Fragment {
                 data.setFileLength(length);
                 data.setFileSize(size);
                 data.setFileImage(image);
-                data.setFilePath(Environment.getExternalStorageDirectory() + "/AMPiNGAT/Earthquake Eap.mp4");
+                data.setFilePath(Environment.getExternalStorageDirectory() + "/AMPiNGAT/Earthquake.mp4");
             }
             videoList.add(data);
         }

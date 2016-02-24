@@ -1,12 +1,12 @@
 package com.ampingat.ampingatapplication;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
+import android.widget.ImageButton;
 
 /**
  * Created by Reyle T. Revira on 8/23/2015.
@@ -16,7 +16,7 @@ public class EmergencyFragment extends Fragment {
         EmergencyFragment fragment = new EmergencyFragment();
         return fragment;
     }
-    Button btn1, btn2, btn3, btn4;
+    ImageButton btn1, btn2, btn3, btn4;
 
     public EmergencyFragment() {
     }
@@ -24,10 +24,10 @@ public class EmergencyFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_emergency, container, false);
-        btn1 = (Button) rootView.findViewById(R.id.button_1st);
-        btn2 = (Button) rootView.findViewById(R.id.button_2nd);
-        btn3 = (Button) rootView.findViewById(R.id.button_3rd);
-        btn4 = (Button) rootView.findViewById(R.id.button_4th);
+        btn1 = (ImageButton) rootView.findViewById(R.id.button_1st);
+        btn2 = (ImageButton) rootView.findViewById(R.id.button_2nd);
+        btn3 = (ImageButton) rootView.findViewById(R.id.button_3rd);
+        btn4 = (ImageButton) rootView.findViewById(R.id.button_4th);
 
         View.OnClickListener btnOneListener = new View.OnClickListener() {
             @Override

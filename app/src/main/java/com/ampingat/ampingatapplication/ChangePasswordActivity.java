@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.ampingat.ampingatapplication.helpers.Constants;
 import com.ampingat.ampingatapplication.models.ChangePassResponse;
 import com.google.gson.Gson;
 
@@ -29,13 +30,11 @@ import butterknife.InjectView;
 public class ChangePasswordActivity extends Activity {
 
     JSONParser jsonParser = new JSONParser();
-    private static String url  = "http://172.20.10.4/ampingat/c_json/changepass";
+    private static String url  = "http://" + Constants.DOMAIN_IP + "ampingat/c_json/changepass";
 
     @InjectView(R.id.txtOldPass) EditText etOldpass;
     @InjectView(R.id.txtNewPass) EditText etNewpass;
     @InjectView(R.id.bChangepass) Button bChangePass;
-    @InjectView(R.id.bCancel) Button bCancel;
-
     UserSessionManager session;
 
     @Override
@@ -64,15 +63,13 @@ public class ChangePasswordActivity extends Activity {
                 new ChangePassword().execute();
             }
         });
-        bCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+    }
 
-                Intent i = new Intent(ChangePasswordActivity.this, MainActivity.class);
-                startActivity(i);
-                finish();
-            }
-        });
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(ChangePasswordActivity.this, UserProfileActivity.class);
+        startActivity(i);
+        finish();
     }
 
     @SuppressWarnings("deprecation")

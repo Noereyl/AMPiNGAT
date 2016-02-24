@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.ampingat.ampingatapplication.SplashScreen"
-    android:background="#ff1caaa9"
+    android:background="#ff800d00"
     android:weightSum="1">
 
 
@@ -14,29 +14,22 @@
         android:id="@+id/splash"
         android:src="@drawable/ic_ampingat"
         android:paddingTop="70dp"
+        android:paddingBottom="10dp"
+        android:layout_gravity="center_horizontal"
+        />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_ampingattxt"
+        android:paddingTop="10dp"
         android:paddingBottom="20dp"
         android:layout_gravity="center_horizontal"
         />
-    <TextView
-        android:id="@+id/ampingat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="AMPiNGAT"
-        android:textSize="@dimen/abc_action_bar_progress_bar_size" />
 
     <ProgressBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/progressBar"
         android:layout_gravity="center_horizontal" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text=""
-        android:id="@+id/status"
-        android:layout_gravity="center_horizontal" />
-
 </LinearLayout>

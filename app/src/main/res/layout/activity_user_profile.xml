@@ -1,25 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:fitsSystemWindows="true"
-    android:background="@android:color/background_light">
+    android:background="#ff802200"
+    android:padding="15dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="20dp"
-        android:paddingLeft="24dp"
-        android:paddingRight="24dp"
-        android:paddingBottom="30dp"
-        android:background="@android:color/background_light">
-
-        <ImageView android:src="@drawable/ic_ampingat"
+        <ImageView android:src="@drawable/ic_profile"
             android:layout_width="126dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
             android:layout_gravity="center_horizontal" />
 
         <!--  Email Label -->
@@ -30,7 +22,7 @@
             android:text="WELCOME USER:"
             android:gravity="center"
             android:textSize="25dip"
-            android:textColor="#ff1caaa9"
+            android:textColor="#fffdfdfe"
             android:linksClickable="false"
             android:clickable="false" />
 
@@ -41,7 +33,7 @@
             android:layout_marginBottom="10dp"
             android:gravity="center"
             android:textSize="20dip"
-            android:textColor="#ff972c58"
+            android:textColor="#ff1fff00"
             android:linksClickable="false"
             android:clickable="false" />
 
@@ -52,7 +44,7 @@
             android:layout_marginBottom="10dp"
             android:gravity="center"
             android:textSize="20dip"
-            android:textColor="#ff972c58"
+            android:textColor="#fffdfdfe"
             android:linksClickable="false"
             android:clickable="false" />
 
@@ -60,10 +52,10 @@
             android:id="@+id/lblType"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
+            android:layout_marginBottom="35dp"
             android:gravity="center"
             android:textSize="10dip"
-            android:textColor="#ff972c58"
+            android:textColor="#fffdfdfe"
             android:linksClickable="false"
             android:clickable="false" />
 
@@ -73,24 +65,11 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:padding="12dp"
+            android:layout_marginBottom="40dp"
             android:text=" Change Password"
-            android:background="#ff1caaa9"
-            android:textSize="@dimen/abc_action_bar_content_inset_material"
+            android:background="#fffe000f"
+            android:textSize="16sp"
+            android:textColor="#fffdfdfe"
             android:clickable="false" />
-
-        <android.support.v7.widget.AppCompatButton
-            android:id="@+id/btnHome"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="24dp"
-            android:padding="12dp"
-            android:text="Home"
-            android:background="#ff59aa10"
-            android:textSize="@dimen/abc_action_bar_content_inset_material"
-            android:clickable="false" />
-
     </LinearLayout>
-</ScrollView>
+

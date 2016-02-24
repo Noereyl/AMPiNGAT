@@ -1,6 +1,8 @@
 package com.ampingat.ampingatapplication;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -20,6 +22,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.ampingat.ampingatapplication.helpers.Constants;
 import com.ampingat.ampingatapplication.models.SendReportResponse;
 import com.google.gson.Gson;
 
@@ -40,8 +43,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
     ViewPager mViewPager;
     UserSessionManager session;
     JSONParser jsonParser = new JSONParser();
-//    private static String url  = "http://172.20.10.4/ampingat/c_json/logout";
-    private static String url  = "http://192.168.1.101/ampingat/c_json/login";
+    private static String url  = "http://" + Constants.DOMAIN_IP + "ampingat/c_json/login";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -175,7 +177,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
     }
 
     public void showProfile(MenuItem item){
-        Toast.makeText(this, "Welcome to your profile!", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Welcome to your profile!", Toast.LENGTH_SHORT).show();
         Intent i = new Intent(MainActivity.this, UserProfileActivity.class);
         startActivity(i);
         finish();
@@ -196,12 +198,27 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
 
 
     public void logout(MenuItem item) {
-        SharedPreferences SM = getSharedPreferences("LoginPrefs", 0);
-        SharedPreferences.Editor edit = SM.edit();
-        edit.putBoolean("IsUserLoggedIn", false);
-        edit.commit();
-        new AttemptLogout().execute();
 
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        AlertDialog dialog = builder.create();
+        dialog.setMessage("Confirm logout");
+        dialog.setButton(AlertDialog.BUTTON_POSITIVE, "Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                SharedPreferences SM = getSharedPreferences("LoginPrefs", 0);
+                SharedPreferences.Editor edit = SM.edit();
+                edit.putBoolean("IsUserLoggedIn", false);
+                edit.commit();
+                new AttemptLogout().execute();
+            }
+        });
+        dialog.setButton(AlertDialog.BUTTON_NEGATIVE, "No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+        dialog.show();
     }
 
 

@@ -4,46 +4,46 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#000">
+    android:background="@drawable/ic_ampbg">
 
-    <Button
+    <ImageButton
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:id="@+id/button_1st"
         android:textSize="20sp"
-        android:background="@drawable/ic_first"
+        android:background="@drawable/ic_first_2"
         android:onClick="firstFloorMap"
         android:typeface="monospace"
         android:textColor="#ff802200" />
 
-    <Button
+    <ImageButton
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@drawable/ic_second"
+        android:background="@drawable/ic_second_2"
         android:id="@+id/button_2nd"
         android:textSize="20sp"
         android:onClick="secondFloorMap"
         android:typeface="monospace"
         android:textColor="#ff802200" />
 
-    <Button
+    <ImageButton
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@drawable/ic_third"
+        android:background="@drawable/ic_third_2"
         android:id="@+id/button_3rd"
         android:textSize="20sp"
         android:onClick="thirdFloorMap"
         android:typeface="monospace"
         android:textColor="#ff802200" />
 
-    <Button
+    <ImageButton
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@drawable/ic_fourth"
+        android:background="@drawable/ic_fourth_2"
         android:id="@+id/button_4th"
         android:textSize="20sp"
         android:onClick="fourthFloorMap"

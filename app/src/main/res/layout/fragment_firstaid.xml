@@ -3,12 +3,16 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000">
+    android:orientation="vertical"
+    android:background="@drawable/ic_ampbg">
 
     <TextView
         android:text="LIST OF FIRST AID VIDEOS"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
         android:textSize="20sp"
         android:textAllCaps="true"
         android:textColor="#fffdfdfe" />
