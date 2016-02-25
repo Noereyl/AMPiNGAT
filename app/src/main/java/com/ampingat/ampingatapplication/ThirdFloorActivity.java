@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.ampingat.ampingatapplication.helpers.Constants;
 import com.ampingat.ampingatapplication.models.RequestRoutesResponse;
@@ -67,7 +66,6 @@ public class ThirdFloorActivity extends Activity implements OnClickableAreaClick
             e.printStackTrace();
             return false;
         }
-        Toast.makeText(ThirdFloorActivity.this, "Internet Connection Status:" + status, Toast.LENGTH_SHORT).show();
         return status;
     }
 
@@ -108,7 +106,6 @@ public class ThirdFloorActivity extends Activity implements OnClickableAreaClick
     @Override
     public void onClickableAreaTouched(Object o) {
 
-        Toast.makeText(ThirdFloorActivity.this, "" + o, Toast.LENGTH_SHORT).show();
         area = "" + o;
         room.setText(area);
         if(isNetworkOnline()) {
@@ -120,7 +117,6 @@ public class ThirdFloorActivity extends Activity implements OnClickableAreaClick
 
     public void defaultRoutes () {
 
-        Toast.makeText(ThirdFloorActivity.this, "Successfully Received the routes...", Toast.LENGTH_SHORT).show();
         if(room.getText().equals("HRMD Office")) {
             imageView.setImageResource(R.drawable.ic_hrmd);
         } else if(room.getText().equals("POD Office")) {
@@ -226,9 +222,7 @@ public class ThirdFloorActivity extends Activity implements OnClickableAreaClick
         protected void onPostExecute(Boolean success) {
             progressDialog.dismiss();
 
-            if(success == true) {
-                Toast.makeText(ThirdFloorActivity.this, requestRoutes.message, Toast.LENGTH_SHORT).show();
-            }
+            if(success)
             direction.setText(requestRoutes.shortestRoute.toString() + " -> " + requestRoutes.secondRoute + " -> " + requestRoutes.thirdRoute);
             if(room.getText().equals("HRMD Office")) {
                 imageView.setImageResource(R.drawable.ic_hrmd);

@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.ampingat.ampingatapplication.helpers.Constants;
 import com.ampingat.ampingatapplication.models.RequestRoutesResponse;
@@ -66,7 +65,6 @@ public class FirstFloorActivity extends Activity implements OnClickableAreaClick
             e.printStackTrace();
             return false;
         }
-        Toast.makeText(FirstFloorActivity.this, "Internet Connection Status:" + status, Toast.LENGTH_SHORT).show();
         return status;
     }
 
@@ -95,8 +93,6 @@ public class FirstFloorActivity extends Activity implements OnClickableAreaClick
 
     @Override
     public void onClickableAreaTouched(Object o) {
-
-        Toast.makeText(FirstFloorActivity.this, "" + o, Toast.LENGTH_SHORT).show();
         area = "" + o;
         room.setText(area);
 
@@ -108,7 +104,6 @@ public class FirstFloorActivity extends Activity implements OnClickableAreaClick
     }
 
     public void defaultRoutes() {
-        Toast.makeText(FirstFloorActivity.this, "Successfully Received the routes...", Toast.LENGTH_SHORT).show();
 
         if(room.getText().equals("Engineering Office")) {
             imageView.setImageResource(R.drawable.ic_engineering);
@@ -203,9 +198,7 @@ public class FirstFloorActivity extends Activity implements OnClickableAreaClick
         protected void onPostExecute(Boolean success) {
             progressDialog.dismiss();
 
-            if(success == true) {
-                Toast.makeText(FirstFloorActivity.this, requestRoutes.message, Toast.LENGTH_SHORT).show();
-            }
+            if(success)
             direction.setText(requestRoutes.shortestRoute.toString() + " -> " + requestRoutes.secondRoute + " -> " + requestRoutes.thirdRoute);
             if(room.getText().equals("Engineering Office")) {
                 imageView.setImageResource(R.drawable.ic_engineering);

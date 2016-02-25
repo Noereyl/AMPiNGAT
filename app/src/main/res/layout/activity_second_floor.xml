@@ -6,22 +6,26 @@
 
     <TextView
         android:id="@+id/roomId"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
         android:text="WHERE ARE YOU NOW?"
+        android:background="#55000000"
         android:textColor="@color/primary_dark"
         android:textSize="25sp"
         android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         />
 
     <TextView
         android:id="@+id/directions"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:background="#55000000"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
         android:textColor="@color/white"
         android:layout_marginTop="35dp"
         android:textSize="14sp"
         android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         />
 
     <ImageView
@@ -31,42 +35,50 @@
         android:scaleType="fitCenter"
         />
     <TextView
-        android:text="LEGEND:"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:paddingTop="360dp"
+        android:id="@+id/legendPink"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_marginLeft="10dp"
-        />
-
-    <TextView
-        android:text="GREEN: Shortest Route"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textColor="@color/green"
-        android:textSize="14sp"
-        android:layout_marginLeft="10dp"
-        android:paddingTop="390dp"
-        />
-    <TextView
-        android:text="ORANGE: Second Route"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textColor="@color/orange"
-        android:textSize="14sp"
-        android:paddingTop="410dp"
-        android:layout_marginLeft="10dp"
-        />
-
-    <TextView
         android:text="NEON PINK: Third Route"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
         android:textColor="@color/pink"
-        android:textSize="14sp"
-        android:paddingTop="430dp"
+        android:background="#55000000"
+        android:textSize="16sp"
+        />
+    <TextView
+        android:id="@+id/legendOrange"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/legendPink"
         android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:text="ORANGE: Second Route"
+        android:textColor="@color/orange"
+        android:background="#55000000"
+        android:textSize="16sp"
+        />
+    <TextView
+        android:id="@+id/legendGreen"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/legendOrange"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:text="GREEN: Shortest Route"
+        android:textColor="@color/green"
+        android:background="#55000000"
+        android:textSize="16sp"
         />
 
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/legendGreen"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:text="LEGEND:"
+        android:textColor="@color/white"
+        android:background="#55000000"
+        android:textSize="22sp"
+        />
 </RelativeLayout>

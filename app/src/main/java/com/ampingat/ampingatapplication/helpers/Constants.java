@@ -5,7 +5,7 @@ package com.ampingat.ampingatapplication.helpers;
  */
 public class Constants {
 
-    public static final String DOMAIN_IP = "192.168.2.249/";
+    public static final String DOMAIN_IP = "172.20.10.4/";
 
     public static final String DOMAIN_UPLOADS = "ampingat/uploads/";
 

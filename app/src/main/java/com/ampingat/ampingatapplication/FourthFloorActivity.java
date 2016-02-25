@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.ampingat.ampingatapplication.helpers.Constants;
 import com.ampingat.ampingatapplication.models.RequestRoutesResponse;
@@ -106,8 +105,6 @@ public class FourthFloorActivity extends Activity implements OnClickableAreaClic
 
     @Override
     public void onClickableAreaTouched(Object o) {
-
-        Toast.makeText(FourthFloorActivity.this, "" + o, Toast.LENGTH_SHORT).show();
         area = "" + o;
         room.setText(area);
 
@@ -218,9 +215,7 @@ public class FourthFloorActivity extends Activity implements OnClickableAreaClic
         protected void onPostExecute(Boolean success) {
             progressDialog.dismiss();
 
-            if(success == true) {
-                Toast.makeText(FourthFloorActivity.this, requestRoutes.message, Toast.LENGTH_SHORT).show();
-            }
+            if(success)
             direction.setText("Route: " + requestRoutes.shortestRoute + requestRoutes.secondRoute);
             customRoutes();
             imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);

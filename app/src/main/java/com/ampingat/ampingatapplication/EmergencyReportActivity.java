@@ -1,8 +1,10 @@
 package com.ampingat.ampingatapplication;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -101,7 +103,23 @@ public class EmergencyReportActivity extends Activity {
         bSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new AttemptSend().execute();
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(EmergencyReportActivity.this);
+                AlertDialog dialog = builder.create();
+                dialog.setMessage("Are you sure you want to send this report?");
+                dialog.setButton(AlertDialog.BUTTON_POSITIVE, "Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        new AttemptSend().execute();
+                    }
+                });
+                dialog.setButton(AlertDialog.BUTTON_NEGATIVE, "No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                });
+                dialog.show();
             }
         });
     }

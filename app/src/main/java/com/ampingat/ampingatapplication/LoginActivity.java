@@ -87,26 +87,6 @@ public class LoginActivity extends Activity {
 
     public void downloadIntent(LoginResponse loginResponse, final Intent intent) {
         ArrayList<VideoFile> videoFiles = new ArrayList<VideoFile>();
-        /*videoFiles.add(new VideoFile("http://" + Constants.DOMAIN_IP + Constants.DOMAIN_UPLOADS + "Adult_CPR_-_Lay_Rescuer.mp4"));
-        videoFiles.add(new VideoFile("http://" + Constants.DOMAIN_IP + Constants.DOMAIN_UPLOADS + "Amputation.mp4"));
-        videoFiles.add(new VideoFile("http://" + Constants.DOMAIN_IP + Constants.DOMAIN_UPLOADS + "Bleeding_Control_Capillary_Bleeding.mp4"));
-        videoFiles.add(new VideoFile("http://" + Constants.DOMAIN_IP + Constants.DOMAIN_UPLOADS + "Bleeding_Control_Venous_Bleeding.mp4"));
-        videoFiles.add(new VideoFile("http://" + Constants.DOMAIN_IP + Constants.DOMAIN_UPLOADS + "Burns.mp4"));
-        videoFiles.add(new VideoFile("http://" + Constants.DOMAIN_IP + Constants.DOMAIN_UPLOADS + "Conscious_Adult_Choking.mp4"));
-        videoFiles.add(new VideoFile("http://" + Constants.DOMAIN_IP + Constants.DOMAIN_UPLOADS + "CPR.mp4"));
-        videoFiles.add(new VideoFile("http://" + Constants.DOMAIN_IP + Constants.DOMAIN_UPLOADS + "Eye_Injuries.mp4"));
-        videoFiles.add(new VideoFile("http://" + Constants.DOMAIN_IP + Constants.DOMAIN_UPLOADS + "Fainting.mp4"));
-        videoFiles.add(new VideoFile("http://" + Constants.DOMAIN_IP + Constants.DOMAIN_UPLOADS + "Hand_Washing.mp4"));
-        videoFiles.add(new VideoFile("http://" + Constants.DOMAIN_IP + Constants.DOMAIN_UPLOADS + "Head,_Neck_and_Back_Injuries.mp4"));
-        videoFiles.add(new VideoFile("http://" + Constants.DOMAIN_IP + Constants.DOMAIN_UPLOADS + "Heat_Related_Emergencies.mp4"));
-        videoFiles.add(new VideoFile("http://" + Constants.DOMAIN_IP + Constants.DOMAIN_UPLOADS + "How_To_Use_An_Epipen.mp4"));
-        videoFiles.add(new VideoFile("http://" + Constants.DOMAIN_IP + Constants.DOMAIN_UPLOADS + "Musculoskeletal_Injuries.mp4"));
-        videoFiles.add(new VideoFile("http://" + Constants.DOMAIN_IP + Constants.DOMAIN_UPLOADS + "Poison_Control.mp4"));
-        videoFiles.add(new VideoFile("http://" + Constants.DOMAIN_IP + Constants.DOMAIN_UPLOADS + "Secondary_Survey.mp4"));
-        videoFiles.add(new VideoFile("http://" + Constants.DOMAIN_IP + Constants.DOMAIN_UPLOADS + "Seizure.mp4"));
-        videoFiles.add(new VideoFile("http://" + Constants.DOMAIN_IP + Constants.DOMAIN_UPLOADS + "Shock.mp4"));
-        videoFiles.add(new VideoFile("http://" + Constants.DOMAIN_IP + Constants.DOMAIN_UPLOADS + "Fire_Eap.mp4"));
-        videoFiles.add(new VideoFile("http://" + Constants.DOMAIN_IP + Constants.DOMAIN_UPLOADS + "Earthquake.mp4"));*/
         for (VideoFile videoFile : loginResponse.videofiles) {
             String videoPath = videoFile.videopath;
             String filename = videoPath.substring(videoPath.lastIndexOf("/") + 1, videoPath.length());
@@ -120,7 +100,6 @@ public class LoginActivity extends Activity {
         progressDialog.setCanceledOnTouchOutside(false);
         progressDialog.setCancelable(true);
         progressDialog.show();
-
         DownloadIntentService downloadIntentService = DownloadIntentService.getInstance();
         downloadIntentService.prepare();
         DownloadIntentService.setSources(videoFiles);

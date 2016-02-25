@@ -65,7 +65,6 @@ public class SecondFloorActivity extends Activity implements OnClickableAreaClic
             e.printStackTrace();
             return false;
         }
-        Toast.makeText(SecondFloorActivity.this, "Internet Connection Status:" + status, Toast.LENGTH_SHORT).show();
         return status;
     }
 
@@ -108,7 +107,6 @@ public class SecondFloorActivity extends Activity implements OnClickableAreaClic
     @Override
     public void onClickableAreaTouched(Object o) {
 
-        Toast.makeText(SecondFloorActivity.this, "" + o, Toast.LENGTH_SHORT).show();
         area = "" + o;
         room.setText(area);
 
@@ -226,9 +224,7 @@ public class SecondFloorActivity extends Activity implements OnClickableAreaClic
         protected void onPostExecute(Boolean success) {
             progressDialog.dismiss();
 
-            if(success == true) {
-                Toast.makeText(SecondFloorActivity.this, requestRoutes.message, Toast.LENGTH_SHORT).show();
-            }
+            if(success)
             direction.setText(requestRoutes.shortestRoute.toString() + " -> " + requestRoutes.secondRoute + " -> " + requestRoutes.thirdRoute);
             if(room.getText().equals("Grade School Faculty")) {
                 imageView.setImageResource(R.drawable.ic_gradefaculty);

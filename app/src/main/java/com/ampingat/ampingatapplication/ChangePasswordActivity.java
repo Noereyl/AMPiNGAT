@@ -1,7 +1,9 @@
 package com.ampingat.ampingatapplication;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -60,7 +62,23 @@ public class ChangePasswordActivity extends Activity {
                     etNewpass.setError("This field is empty!");
                     return;
                 }
-                new ChangePassword().execute();
+                AlertDialog.Builder builder = new AlertDialog.Builder(ChangePasswordActivity.this);
+                AlertDialog dialog = builder.create();
+                dialog.setMessage("Are you sure you want to change your password?");
+                dialog.setButton(AlertDialog.BUTTON_POSITIVE, "Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        new ChangePassword().execute();
+                    }
+                });
+                dialog.setButton(AlertDialog.BUTTON_NEGATIVE, "No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                });
+                dialog.show();
+
             }
         });
     }
